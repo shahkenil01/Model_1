@@ -1,0 +1,467 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Registration Form</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        font-family: 'Times New Roman', Times, serif;
+      }
+
+      body {
+        text-align: center;
+      }
+
+      header,
+      nav {
+        display: flex;
+        justify-content: center;
+        height: 60px;
+        background-color: lightgray;
+        align-items: center;
+      }
+
+      .nav {
+        text-decoration: none;
+        padding-right: 40px;
+        color: black;
+      }
+
+      .main {
+        width: 800px;
+        margin: auto;
+        margin-top: 30px;
+        border: 3px solid green;
+        background: #99ff66;
+      }
+
+      h1 {
+        text-align: center;
+        color: darkgreen;
+        padding: 15px;
+        margin: 0;
+        font-size: 40px;
+      }
+
+      h2 {
+        margin-top: 30px;
+        margin-bottom: 20px;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: auto;
+      }
+
+      td,
+      th {
+        border: 2px solid green;
+        padding: 8px;
+        font-size: 20px;
+        text-align: center;
+      }
+
+      .label {
+        width: 35%;
+        text-align: center;
+        font-weight: bold;
+      }
+
+      input,
+      textarea,
+      select {
+        width: 95%;
+        padding: 5px;
+        font-size: 16px;
+      }
+
+      textarea {
+        height: 80px;
+      }
+
+      .btn {
+        width: auto;
+        padding: 5px 15px;
+        font-size: 16px;
+      }
+
+      .radioBox {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .radioBox input {
+        width: auto;
+      }
+
+      .tableform {
+        border-collapse: collapse;
+        width: 700px;
+        margin: auto;
+        margin-top: 20px;
+      }
+
+      .td {
+        border: 2px solid black;
+        padding: 12px;
+        font-size: 22px;
+      }
+
+      .container {
+        width: 90%;
+        margin: auto;
+        margin-top: 40px;
+      }
+
+      audio {
+        width: 250px;
+      }
+
+      iframe {
+        margin-top: 20px;
+      }
+
+      .videoSection,
+      .locationSection {
+        margin-top: 40px;
+      }
+
+      .download-btn {
+        text-decoration: none;
+        background-color: green;
+        color: white;
+        padding: 8px 15px;
+        border-radius: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <a href="#Register" class="nav">Register Form</a>
+        <a href="#tableform" class="nav">Table Format</a>
+        <a href="#AudioVideo" class="nav">Audio/Video</a>
+        <a href="#videoSection" class="nav">YouTube</a>
+        <a href="#locationSection" class="nav">Location</a>
+      </nav>
+    </header>
+
+    <br />
+    <hr />
+
+    <!-- Register Form -->
+    <div class="main" id="Register">
+      <h1>Registration Form</h1>
+
+      <form>
+        <table>
+          <tr>
+            <td class="label">First Name :</td>
+            <td>
+              <input
+                type="text"
+                placeholder="Enter First Name"
+                required
+                pattern="[A-Za-z]+"
+                title="Only alphabets allowed"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Last Name :</td>
+            <td>
+              <input
+                type="text"
+                placeholder="Enter Last Name"
+                required
+                pattern="[A-Za-z]+"
+                title="Only alphabets allowed"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Contact No. :</td>
+            <td>
+              <input
+                type="tel"
+                placeholder="Enter 10-digit Contact Number"
+                required
+                pattern="[0-9]{10}"
+                title="Enter exactly 10 digits"
+                maxlength="10"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Landline No. :</td>
+            <td>
+              <input
+                type="text"
+                placeholder="Enter Your Landline No"
+                pattern="[0-9]{6,11}"
+                title="Enter 6 to 11 digit landline number"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Email :</td>
+            <td>
+              <input type="email" placeholder="Enter Your Email ID" required />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Password :</td>
+            <td>
+              <input
+                type="password"
+                placeholder="Min 8 characters"
+                required
+                minlength="8"
+                title="Password must be at least 8 characters"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Date of Birth :</td>
+            <td>
+              <input
+                type="date"
+                required
+                max="2007-12-31"
+                title="You must be at least 18 years old"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Age :</td>
+            <td>
+              <input
+                type="number"
+                placeholder="Enter Age"
+                min="18"
+                max="100"
+                title="Age must be between 18 and 100"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Gender :</td>
+            <td>
+              <div class="radioBox">
+                <label> <input type="radio" name="g" required /> Male </label>
+                <label> <input type="radio" name="g" /> Female </label>
+              </div>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Address :</td>
+            <td>
+              <textarea
+                placeholder="Enter Full Address"
+                required
+                minlength="10"
+                title="Address must be at least 10 characters"
+              ></textarea>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">City :</td>
+            <td>
+              <select required>
+                <option value="">Select City</option>
+                <option>Ahmedabad</option>
+                <option>Surat</option>
+                <option>Rajkot</option>
+                <option>Vadodara</option>
+              </select>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Pincode :</td>
+            <td>
+              <input
+                type="text"
+                placeholder="Enter 6-digit Pincode"
+                required
+                pattern="[0-9]{6}"
+                title="Pincode must be exactly 6 digits"
+                maxlength="6"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Joining Date :</td>
+            <td>
+              <input
+                type="date"
+                required
+                min="2024-01-01"
+                title="Joining date must be 2024 or later"
+              />
+            </td>
+          </tr>
+
+          <tr>
+            <td class="label">Confirm Your Form :</td>
+            <td>
+              <input type="submit" value="Submit" class="btn" />
+              <input type="reset" value="Reset" class="btn" />
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+
+    <!-- Irregular Table -->
+    <h2>Irregular Table</h2>
+
+    <table class="tableform" id="tableform">
+      <tr>
+        <td colspan="2" class="td">A</td>
+        <td colspan="4" class="td">B</td>
+        <td rowspan="4" class="td">J</td>
+      </tr>
+      <tr>
+        <td class="td">C</td>
+        <td class="td">D</td>
+        <td class="td">F</td>
+        <td class="td">G</td>
+        <td class="td">H</td>
+      </tr>
+      <tr>
+        <td rowspan="2" class="td">K</td>
+        <td class="td">M</td>
+        <td colspan="2" class="td">N</td>
+        <td colspan="2" class="td">I</td>
+      </tr>
+      <tr>
+        <td class="td">L</td>
+        <td class="td">P</td>
+        <td class="td">O</td>
+        <td class="td">I</td>
+        <td class="td">H</td>
+      </tr>
+    </table>
+
+    <!-- Audio and Video -->
+    <div class="container" id="AudioVideo">
+      <h2>Audio List</h2>
+
+      <table>
+        <tr>
+          <th>Sr No</th>
+          <th>Song Name</th>
+          <th>Play</th>
+          <th>Download</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Sitaare</td>
+          <td>
+            <audio controls>
+              <source src="Music/Sitaare Ikkis 128 Kbps.mp3" type="audio/mp3" />
+            </audio>
+          </td>
+          <td>
+            <a
+              href="Music/Sitaare Ikkis 128 Kbps.mp3"
+              download
+              class="download-btn"
+              >Download</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Gehra Hua</td>
+          <td>
+            <audio controls>
+              <source
+                src="Music/Gehra Hua - Dhurandhar (128 kbps).mp3"
+                type="audio/mp3"
+              />
+            </audio>
+          </td>
+          <td>
+            <a
+              href="Music/Gehra Hua - Dhurandhar (128 kbps).mp3"
+              download
+              class="download-btn"
+              >Download</a
+            >
+          </td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>Relax Tune</td>
+          <td>
+            <audio controls>
+              <source src="audio/song3.mp3" type="audio/mp3" />
+            </audio>
+          </td>
+          <td>
+            <a href="audio/song3.mp3" download class="download-btn">Download</a>
+          </td>
+        </tr>
+      </table>
+
+      <!-- YouTube Video -->
+      <div class="videoSection" id="videoSection">
+        <h2>YouTube Video</h2>
+        <iframe
+          width="600"
+          height="337"
+          src="https://www.youtube.com/embed/5IJycI1VJMI?autoplay=1&mute=1"
+          title="Bapuji ne Diya Dinner Party! | FULL MOVIE | Taarak Mehta Ka Ooltah Chashmah"
+          frameborder="0"
+          allow="
+            accelerometer;
+            autoplay;
+            clipboard-write;
+            encrypted-media;
+            gyroscope;
+            picture-in-picture;
+            web-share;
+          "
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        >
+        </iframe>
+      </div>
+
+      <!-- Location -->
+      <div class="locationSection" id="locationSection">
+        <h2>Location</h2>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d7340.765886142682!2d72.53387089999998!3d23.083073500000005!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sin!4v1778608264069!5m2!1sen!2sin"
+          width="600"
+          height="450"
+          style="border: 0"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        >
+        </iframe>
+      </div>
+    </div>
+  </body>
+</html>
