@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprehensive Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            max-width: 500px;
+            margin: auto;
+        }
+        .d2 {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        input, select, textarea {
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        .rb, .cb
+         {
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+        }
+        input[type="submit"] {
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        input[type="submit"]:hover {
+            background-color: skyblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="form-container">
+        <h2>Register Account</h2>
+        <form>
+
+            <div class="d2">
+                <label>Username (Text):</label>
+                <input type="text" placeholder="Enter username" required>
+            </div>
+
+            <div class="d2">
+                <label>Password (Password):</label>
+                <input type="password" required>
+            </div>
+
+           
+            <div class="d2">
+                <label>Email (Email):</label>
+                <input type="email" placeholder="example@mail.com">
+            </div>
+
+            <div class="d2">
+                <label>Phone (Tel):</label>
+                <input type="tel" placeholder="123-456-7890">
+            </div>
+
+           
+            <div class="d2">
+                <label>Age (Number):</label>
+                <input type="number" min="18" max="99">
+            </div>
+
+            <div class="d2">
+                <label>Birthday (Date):</label>
+                <input type="date">
+            </div>
+
+            
+            <div class="d2">
+                <label>Gender (Radio):</label>
+                <div class="rb
+p">
+                    <input type="radio" name="gender" value="male"> Male
+                    <input type="radio" name="gender" value="female"> Female
+                </div>
+            </div>
+
+            <div class="d2">
+                <label>Country (Select):</label>
+                <select>
+                    <option value="usa">India</option>
+                    <option value="uk">UK</option>
+                    <option value="india">USA</option>
+                </select>
+            </div>
+
+            
+            <div class="d2">
+                <label>Profile Picture (File):</label>
+                <input type="file">
+            </div>
+
+            <div class="d2">
+                <label>Favorite Color (Color):</label>
+                <input type="color">
+            </div>
+
+            <div class="d2 cb
+">
+                <input type="checkbox" id="terms">
+                <label for="terms">I agree to the terms and conditions</label>
+            </div>
+
+            
+            <div class="d2">
+                <input type="submit">
+                <input type="reset" style="margin-top: 5px; background-color: #6c757d;">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
