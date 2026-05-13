@@ -28,7 +28,6 @@ ul {
   margin: 0;
 }
 
-/* ─── STICKY HEADER ──────────────────────────── */
 .headerWrapperFixed {
   background: #fff;
   position: sticky;
@@ -42,14 +41,12 @@ ul {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-/* ─── CONTAINER ──────────────────────────────── */
 .container {
   max-width: 1280px;
   margin: 0 auto;
   padding: 0 15px;
 }
 
-/* ─── TOP HEADER ROW ─────────────────────────── */
 .header {
   width: 100%;
   padding: 14px 0 10px 0;
@@ -62,7 +59,6 @@ ul {
   gap: 12px;
 }
 
-/* ─── LOGO ───────────────────────────────────── */
 .logoWrapper {
   display: flex;
   align-items: center;
@@ -76,7 +72,6 @@ ul {
   display: block;
 }
 
-/* ─── COUNTRY DROPDOWN ───────────────────────── */
 .countryDrop {
   width: 170px;
   min-width: 150px;
@@ -111,7 +106,6 @@ ul {
   line-height: 1.2;
 }
 
-/* ─── SEARCH BOX ─────────────────────────────── */
 .headersearchWrapper {
   flex: 1;
   max-width: 500px;
@@ -175,7 +169,6 @@ ul {
   color: #6d4aae;
 }
 
-/* ─── PART 3 — actions ───────────────────────── */
 .part3 {
   display: flex;
   align-items: center;
@@ -183,7 +176,6 @@ ul {
   flex-shrink: 0;
 }
 
-/* Sign In Button */
 .btn-blue {
   padding: 10px 24px;
   background: #6d4aae;
@@ -245,21 +237,17 @@ ul {
   font-weight: 700;
 }
 
-/* NAVIGATION */
-
 .nav-row {
   display: flex;
   align-items: center;
   padding: 8px 0;
 }
 
-/* ── ALL CATEGORIES (CSS-only toggle via checkbox hack) ── */
 .catWrapper {
   position: relative;
   flex-shrink: 0;
 }
 
-/* Hidden checkbox — powers the toggle */
 #sidebarToggle {
   display: none;
 }
@@ -278,7 +266,6 @@ ul {
   cursor: pointer;
   white-space: nowrap;
   transition: background 0.2s;
-  /* label acts as the button */
 }
 
 .allCatTab:hover {
@@ -289,7 +276,6 @@ ul {
   font-size: 17px;
 }
 
-/* Sidebar — hidden by default */
 .sidebarNav {
   width: 180px;
   max-height: 0;
@@ -307,13 +293,11 @@ ul {
   z-index: 100;
 }
 
-/* Checkbox checked → sidebar open */
 #sidebarToggle:checked ~ .sidebarNav {
   max-height: 500px;
   opacity: 1;
 }
 
-/* Change hamburger icon when open */
 #sidebarToggle:checked ~ label .fa-bars {
   display: none;
 }
@@ -355,7 +339,6 @@ label .fa-xmark {
   background: #f4f0fc;
 }
 
-/* Sidebar submenu on hover */
 .sidebarNav ul li {
   position: relative;
 }
@@ -396,7 +379,6 @@ label .fa-xmark {
   color: #6d4aae;
 }
 
-/* ── NAVBAR LINKS ── */
 .navPart2 {
   flex: 1;
 }
@@ -404,7 +386,7 @@ label .fa-xmark {
 .navPart2 ul {
   display: flex;
   align-items: center;
-  justify-content: space-evenly; /* ← evenly spreads all 7 items */
+  justify-content: space-evenly;
   gap: 0;
   width: 100%;
 }
@@ -433,7 +415,6 @@ label .fa-xmark {
   background: #f4f0fc;
 }
 
-/* Navbar submenu on hover */
 .navPart2 ul li .submenu {
   display: none;
   position: absolute;
@@ -468,7 +449,6 @@ label .fa-xmark {
   color: #6d4aae;
 }
 
-/* emoji */
 .nav-emoji {
   font-size: 16px;
 }
