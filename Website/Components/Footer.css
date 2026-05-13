@@ -100,6 +100,7 @@ footer .linksWrap ul li a:hover {
 footer .copyright {
   display: flex;
   margin-top: 3rem;
+  margin: auto;
   padding: 1rem 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   align-items: center;

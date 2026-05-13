@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cart Page</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+
+      body {
+        background: #f5f5f5;
+      }
+
+      .container {
+        width: 90%;
+        margin: auto;
+      }
+
+      .cartPage {
+        padding: 40px 0;
+      }
+
+      .cartPage h2 {
+        font-size: 32px;
+        margin-bottom: 10px;
+        color: #222;
+      }
+
+      .cartPage p {
+        margin-bottom: 30px;
+        color: #666;
+      }
+
+      .text-red {
+        color: #e63946;
+        font-weight: bold;
+      }
+
+      .cart-wrapper {
+        display: flex;
+        gap: 25px;
+        align-items: flex-start;
+      }
+
+      .cart-left {
+        width: 70%;
+      }
+
+      .cart-right {
+        width: 30%;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: #fff;
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      table thead {
+        background: #ddd;
+      }
+
+      table thead th {
+        padding: 15px;
+        text-align: left;
+        font-size: 15px;
+      }
+
+      table tbody td {
+        padding: 15px;
+        border-bottom: 1px solid #eee;
+      }
+
+      .cartItemimgWrapper {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .imgWrapper {
+        width: 80px;
+        height: 80px;
+        background: #eee;
+        border-radius: 6px;
+        overflow: hidden;
+      }
+
+      .imgWrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .info h6 {
+        font-size: 14px;
+        color: #333;
+        margin-bottom: 6px;
+      }
+
+      .rating {
+        color: gold;
+        font-size: 13px;
+      }
+
+      /* Pure CSS Quantity Box */
+      .quantity-box {
+        border: 1px solid #ccc;
+        padding: 8px 15px;
+        width: 70px;
+        text-align: center;
+        border-radius: 5px;
+        background: #fafafa;
+        font-weight: bold;
+      }
+
+      .remove {
+        color: red;
+        font-size: 22px;
+        cursor: pointer;
+      }
+
+      .cartDetails {
+        background: #fff;
+        padding: 25px;
+        border-radius: 10px;
+      }
+
+      .cartDetails h4 {
+        margin-bottom: 20px;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 15px;
+      }
+
+      .cart-row {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 18px;
+        font-size: 15px;
+      }
+
+      .cart-row.total {
+        border-top: 1px solid #ddd;
+        padding-top: 15px;
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      .checkout-btn {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        background: #e63946;
+        color: #fff;
+        font-size: 16px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 15px;
+      }
+
+      .checkout-btn:hover {
+        background: #c91f2f;
+      }
+
+      .header-frame {
+        width: 100%;
+        height: 140px;
+        display: block;
+        margin-bottom: -20px;
+      }
+
+      .footer-frame {
+        width: 100%;
+        height: 350px;
+        display: block;
+      }
+
+    </style>
+  </head>
+  <body>
+    <iframe
+      src="Components/Header.html"
+      frameborder="0"
+      scrolling="no"
+      class="header-frame"
+    >
+    </iframe>
+
+    <main>
+      <section class="cartPage">
+        <div class="container">
+          <h2>Your Cart</h2>
+
+          <p>There are <span class="text-red">3</span> products in your cart</p>
+
+          <div class="cart-wrapper">
+            <div class="cart-left">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Products</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Subtotal</th>
+                    <th>Remove</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>
+                      <div class="cartItemimgWrapper">
+                        <div class="imgWrapper">
+                          <img src="Images/shirt.jpg" alt="" />
+                        </div>
+
+                        <div class="info">
+                          <h6>Men Regular Fit Shirt</h6>
+
+                          <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>₹300</td>
+
+                    <td>
+                      <div class="quantity-box">1</div>
+                    </td>
+
+                    <td>₹300</td>
+
+                    <td>
+                      <span class="remove">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </td>
+                  </tr>
+
+                  <tr>
+                    <td>
+                      <div class="cartItemimgWrapper">
+                        <div class="imgWrapper">
+                          <img src="Images/shirt.jpg" alt="" />
+                        </div>
+
+                        <div class="info">
+                          <h6>Premium Cotton T-Shirt</h6>
+
+                          <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>₹500</td>
+
+                    <td>
+                      <div class="quantity-box">2</div>
+                    </td>
+
+                    <td>₹1000</td>
+
+                    <td>
+                      <span class="remove">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </td>
+                  </tr>
+
+                  <!-- Product 3 -->
+                  <tr>
+                    <td>
+                      <div class="cartItemimgWrapper">
+                        <div class="imgWrapper">
+                          <img src="Images/shirt.jpg" alt="" />
+                        </div>
+
+                        <div class="info">
+                          <h6>Casual Blue Jeans</h6>
+
+                          <div class="rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+
+                    <td>₹1200</td>
+
+                    <td>
+                      <div class="quantity-box">1</div>
+                    </td>
+
+                    <td>₹1200</td>
+
+                    <td>
+                      <span class="remove">
+                        <i class="fas fa-times"></i>
+                      </span>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="cart-right">
+              <div class="cartDetails">
+                <h4>CART TOTALS</h4>
+
+                <div class="cart-row">
+                  <span>Subtotal</span>
+                  <span>₹2500</span>
+                </div>
+
+                <div class="cart-row">
+                  <span>GST (12%)</span>
+                  <span>₹300</span>
+                </div>
+
+                <div class="cart-row">
+                  <span>Delivery Charge</span>
+                  <span>₹45</span>
+                </div>
+
+                <div class="cart-row total">
+                  <span>Total</span>
+                  <span>₹2845</span>
+                </div>
+
+                <button class="checkout-btn">
+                  <i class="fas fa-shopping-bag"></i>
+                  Checkout
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <iframe
+      src="Components/Footer.html"
+      frameborder="0"
+      scrolling="no"
+      class="footer-frame"
+    >
+    </iframe>
+  </body>
+</html>
