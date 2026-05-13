@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Header</title>
+
+    <link rel="stylesheet" href="/Website/Components/header.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+
+  </head>
+
+  <body>
+    <div class="headerWrapperFixed">
+      <div class="headerWrapper">
+        <header class="header">
+          <div class="container">
+            <div class="header-row">
+              <div class="logoWrapper">
+                <a href="/">
+                  <img src="/Website/Images/logo.jpeg" alt="Logo" />
+                </a>
+              </div>
+
+              <div class="countryDrop">
+                <span class="lable">Your Location</span>
+                <span class="name">India</span>
+              </div>
+
+              <div class="headersearchWrapper">
+                <div class="headerSearch">
+                  <input type="text" placeholder="Search for Products.." />
+                  <button class="search-btn" type="button">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="part3">
+                <!-- Sign In Button -->
+                <a href="/Website/SignIn.html">
+                  <button class="btn-blue">Sign In</button>
+                </a>
+
+                <!-- Cart -->
+                <div class="cartTab">
+                  <div class="cart-icon-wrap">
+                    <a href="/Cart" class="cart">
+                      <i class="fa-solid fa-bag-shopping"></i>
+                    </a>
+                    <span class="count">0</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- ── NAVIGATION ── -->
+        <nav class="navigation">
+          <div class="container">
+            <div class="nav-row">
+              <!-- ALL CATEGORIES (CSS checkbox toggle) -->
+              <div class="catWrapper">
+                <!-- Hidden checkbox -->
+                <input type="checkbox" id="sidebarToggle" />
+
+                <!-- Label acts as the toggle button -->
+                <label class="allCatTab" for="sidebarToggle">
+                  <i class="fa-solid fa-bars"></i>
+                  <i class="fa-solid fa-xmark"></i>
+                  <span>ALL CATEGORIES</span>
+                  <i class="fa-solid fa-angle-down"></i>
+                </label>
+
+                <!-- Sidebar dropdown -->
+                <div class="sidebarNav">
+                  <ul>
+                    <li>
+                      <a href="/products/cat/fashion">
+                        <span class="nav-emoji">👕</span> Fashion
+                      </a>
+                      <div class="submenu">
+                        <a href="/products/subcat/men">Men</a>
+                        <a href="/products/subcat/women">Women</a>
+                        <a href="/products/subcat/kids">Kids</a>
+                      </div>
+                    </li>
+
+                    <li>
+                      <a href="/products/cat/electronics">
+                        <span class="nav-emoji">📱</span> Electronics
+                      </a>
+                      <div class="submenu">
+                        <a href="/products/subcat/mobiles">Mobiles</a>
+                        <a href="/products/subcat/laptops">Laptops</a>
+                        <a href="/products/subcat/accessories">Accessories</a>
+                      </div>
+                    </li>
+
+                    <li>
+                      <a href="/products/cat/bags">
+                        <span class="nav-emoji">👜</span> Bags
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/products/cat/footwear">
+                        <span class="nav-emoji">👟</span> Footwear
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/products/cat/groceries">
+                        <span class="nav-emoji">🛒</span> Groceries
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/products/cat/beauty">
+                        <span class="nav-emoji">💄</span> Beauty
+                      </a>
+                    </li>
+
+                    <li>
+                      <a href="/products/cat/wellness">
+                        <span class="nav-emoji">🧘</span> Wellness
+                      </a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- NAVBAR LINKS -->
+              <div class="navPart2">
+                <ul>
+                  <li>
+                    <a href="/products/cat/fashion">
+                      <span class="nav-emoji">👕</span> fashion
+                    </a>
+                    <div class="submenu">
+                      <a href="/products/subcat/men">Men</a>
+                      <a href="/products/subcat/women">Women</a>
+                      <a href="/products/subcat/kids">Kids</a>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a href="/products/cat/electronics">
+                      <span class="nav-emoji">📱</span> electronics
+                    </a>
+                    <div class="submenu">
+                      <a href="/products/subcat/mobiles">Mobiles</a>
+                      <a href="/products/subcat/laptops">Laptops</a>
+                      <a href="/products/subcat/accessories">Accessories</a>
+                    </div>
+                  </li>
+
+                  <li>
+                    <a href="/products/cat/bags">
+                      <span class="nav-emoji">👜</span> bags
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/products/cat/footwear">
+                      <span class="nav-emoji">👟</span> footwear
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/products/cat/groceries">
+                      <span class="nav-emoji">🛒</span> groceries
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/products/cat/beauty">
+                      <span class="nav-emoji">💄</span> beauty
+                    </a>
+                  </li>
+
+                  <li>
+                    <a href="/products/cat/wellness">
+                      <span class="nav-emoji">🧘</span> wellness
+                    </a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>

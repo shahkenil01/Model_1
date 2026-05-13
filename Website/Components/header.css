@@ -1,0 +1,474 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.8);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  text-transform: capitalize;
+  cursor: pointer;
+  font-family: 'Lato', sans-serif;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* ─── STICKY HEADER ──────────────────────────── */
+.headerWrapperFixed {
+  background: #fff;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+}
+
+.headerWrapper {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+/* ─── CONTAINER ──────────────────────────────── */
+.container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* ─── TOP HEADER ROW ─────────────────────────── */
+.header {
+  width: 100%;
+  padding: 14px 0 10px 0;
+}
+
+.header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+/* ─── LOGO ───────────────────────────────────── */
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.logoWrapper img {
+  width: 120px;
+  border-radius: 8px;
+  -webkit-user-drag: none;
+  display: block;
+}
+
+/* ─── COUNTRY DROPDOWN ───────────────────────── */
+.countryDrop {
+  width: 170px;
+  min-width: 150px;
+  height: 51px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 7px;
+  padding: 10px 15px;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: box-shadow 0.2s;
+  margin-left: -100px;
+}
+
+.countryDrop:hover {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.countryDrop .lable {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.5);
+  line-height: 1.6;
+}
+
+.countryDrop .name {
+  font-size: 15px;
+  color: #6d4aae;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* ─── SEARCH BOX ─────────────────────────────── */
+.headersearchWrapper {
+  flex: 1;
+  max-width: 500px;
+  position: relative;
+  margin-left: -145px;
+}
+
+.headerSearch {
+  width: 100%;
+  height: 50px;
+  background: #e5e5e5;
+  padding: 5px;
+  position: relative;
+  border-radius: 3px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.headerSearch:focus-within {
+  background: #fff;
+  border-color: #6d4aae;
+}
+
+.headerSearch input {
+  flex: 1;
+  height: 100%;
+  background: transparent;
+  outline: none;
+  font-size: 15px;
+  color: rgba(0, 0, 0, 0.7);
+  border: none;
+  padding: 0 20px;
+  font-family: 'Lato', sans-serif;
+}
+
+.headerSearch input::placeholder {
+  color: rgba(0, 0, 0, 0.4);
+}
+
+.headerSearch .search-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.headerSearch .search-btn:hover {
+  color: #6d4aae;
+}
+
+/* ─── PART 3 — actions ───────────────────────── */
+.part3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Sign In Button */
+.btn-blue {
+  padding: 10px 24px;
+  background: #6d4aae;
+  color: #fff;
+  border: none;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* Cart button */
+.cartTab {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.cart-icon-wrap {
+  position: relative;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 43px;
+  height: 41px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff1ee;
+  color: #ea2b0f;
+  font-size: 20px;
+  cursor: pointer;
+  transition:
+    background 0.2s,
+    border-color 0.2s;
+}
+
+.cart:hover {
+  background: #ffe0da;
+  border-color: #ea2b0f;
+}
+
+.count {
+  position: absolute;
+  top: -6px;
+  right: -4px;
+  background: #ea2b0f;
+  border-radius: 50%;
+  color: #fff;
+  width: 18px;
+  height: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* NAVIGATION */
+
+.nav-row {
+  display: flex;
+  align-items: center;
+  padding: 8px 0;
+}
+
+/* ── ALL CATEGORIES (CSS-only toggle via checkbox hack) ── */
+.catWrapper {
+  position: relative;
+  flex-shrink: 0;
+}
+
+/* Hidden checkbox — powers the toggle */
+#sidebarToggle {
+  display: none;
+}
+
+.allCatTab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #6d4aae;
+  color: #fff;
+  padding: 9px 14px;
+  border-radius: 30px;
+  border: none;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s;
+  /* label acts as the button */
+}
+
+.allCatTab:hover {
+  background: #5a3a9a;
+}
+
+.allCatTab i {
+  font-size: 17px;
+}
+
+/* Sidebar — hidden by default */
+.sidebarNav {
+  width: 180px;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  background: #fff;
+  position: absolute;
+  top: 46px;
+  left: 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition:
+    max-height 0.35s ease,
+    opacity 0.3s ease;
+  z-index: 100;
+}
+
+/* Checkbox checked → sidebar open */
+#sidebarToggle:checked ~ .sidebarNav {
+  max-height: 500px;
+  opacity: 1;
+}
+
+/* Change hamburger icon when open */
+#sidebarToggle:checked ~ label .fa-bars {
+  display: none;
+}
+
+#sidebarToggle:checked ~ label .fa-xmark {
+  display: inline;
+}
+
+label .fa-xmark {
+  display: none;
+}
+
+.sidebarNav ul {
+  padding: 10px 0;
+}
+
+.sidebarNav ul li {
+  width: 100%;
+  padding: 0 10px;
+  position: static;
+}
+
+.sidebarNav ul li a {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 6px;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  font-weight: 600;
+  border-radius: 5px;
+  transition:
+    color 0.2s,
+    background 0.2s;
+}
+
+.sidebarNav ul li a:hover {
+  color: #7a55c1;
+  background: #f4f0fc;
+}
+
+/* Sidebar submenu on hover */
+.sidebarNav ul li {
+  position: relative;
+}
+
+.sidebarNav ul li .submenu {
+  position: absolute;
+  top: 0;
+  left: 178px;
+  width: 150px;
+  background: #fff;
+  border: 1.5px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 6px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition:
+    opacity 0.2s ease,
+    visibility 0.2s ease;
+  z-index: 200;
+}
+
+.sidebarNav ul li:hover .submenu {
+  opacity: 1;
+  visibility: visible;
+}
+
+.sidebarNav ul li .submenu a {
+  display: block;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75);
+  border-radius: 0;
+}
+
+.sidebarNav ul li .submenu a:hover {
+  background: #f4f0fc;
+  color: #6d4aae;
+}
+
+/* ── NAVBAR LINKS ── */
+.navPart2 {
+  flex: 1;
+}
+
+.navPart2 ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly; /* ← evenly spreads all 7 items */
+  gap: 0;
+  width: 100%;
+}
+
+.navPart2 ul li {
+  position: relative;
+}
+
+.navPart2 ul li > a {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  font-size: 17px;
+  font-weight: 800;
+  color: solid black;
+  border-radius: 8px;
+  transition:
+    color 0.2s,
+    background 0.2s;
+  white-space: nowrap;
+}
+
+.navPart2 ul li > a:hover {
+  color: #6d4aae;
+  background: #f4f0fc;
+}
+
+/* Navbar submenu on hover */
+.navPart2 ul li .submenu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.13);
+  min-width: 160px;
+  z-index: 50;
+  padding: 6px 0;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.navPart2 ul li:hover .submenu {
+  display: block;
+}
+
+.navPart2 ul li .submenu a {
+  display: block;
+  padding: 9px 18px;
+  font-size: 13px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.75);
+  transition:
+    background 0.15s,
+    color 0.15s;
+}
+
+.navPart2 ul li .submenu a:hover {
+  background: #f4f0fc;
+  color: #6d4aae;
+}
+
+/* emoji */
+.nav-emoji {
+  font-size: 16px;
+}

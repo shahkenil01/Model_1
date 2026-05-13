@@ -1,111 +1,56 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Simple Sign In</title>
+  <title>Login Form</title>
 
   <style>
-    *{
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
 
     body{
-      background: linear-gradient(#46277e, #583991);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      background: purple;
+      font-family: Arial;
     }
 
     .login-box{
-      width: 350px;
+      width: 300px;
       background: white;
-      padding: 30px;
+      padding: 20px;
+      margin: 155px auto;
       border-radius: 10px;
     }
 
     h2{
       text-align: center;
-      margin-bottom: 25px;
     }
 
-    .input-box{
-      margin-bottom: 20px;
-    }
-
-    .input-box label{
-      display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    .input-box input{
-      width: 100%;
+    input{
+      width: 92%;
       padding: 10px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-
-    .forgot{
-      text-decoration: none;
-      font-size: 14px;
-      color: blue;
-    }
-
-    .btn-box{
-      display: flex;
-      gap: 10px;
-      margin-top: 20px;
-    }
-
-    button{
-      flex: 1;
-      padding: 10px;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      font-size: 16px;
+      margin-top: 5px;
+      margin-bottom: 15px;
     }
 
     .signin-btn{
-      background: #46277e;
+      background: purple;
       color: white;
-    }
-
-    .cancel-btn{
-      background: white;
-      border: 1px solid #46277e;
-      color: #46277e;
-    }
-
-    .bottom-text{
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .bottom-text a{
-      color: blue;
-      text-decoration: none;
+      padding: 10px;
+      border: none;
+      width: 100%;
     }
 
     .google-btn{
       width: 100%;
-      margin-top: 20px;
-      background: white;
-      border: 1px solid #ccc;
       padding: 10px;
-      border-radius: 5px;
-      cursor: pointer;
+      margin-top: 10px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
       font-weight: bold;
     }
 
-    .google-btn img{
+    img{
       width: 20px;
-      vertical-align: middle;
-      margin-right: 10px;
     }
 
   </style>
@@ -119,43 +64,21 @@
 
     <form>
 
-      <div class="input-box">
-        <label>Email</label>
-        <input 
-          type="email" 
-          placeholder="Enter Email"
-          required
-        >
-      </div>
+      Email <br>
+      <input type="email" placeholder="Enter Email" required>
 
-      <div class="input-box">
-        <label>Password</label>
-        <input 
-          type="password" 
-          placeholder="Enter Password"
-          minlength="6"
-          required
-        >
-      </div>
+      Password <br>
+      <input type="password" placeholder="Enter Password" required>
 
-      <a href="#" class="forgot">Forgot Password?</a>
+      <button type="submit" class="signin-btn">
+        Sign In
+      </button>
 
-      <div class="btn-box">
-        <button type="submit" class="signin-btn">
-          Sign In
-        </button>
-
-        <button type="reset" class="cancel-btn">
-          Cancel
-        </button>
-      </div>
-
-    </form>
-
-    <div class="bottom-text">
+      <p>
       Not Registered?
-      <a href="#">Sign Up</a>
-    </div>
+      <a href="SignUp.html">Sign Up</a>
+      </p>
+    </form>
 
     <button class="google-btn">
       <img src="Images/Google image.png">

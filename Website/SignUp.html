@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Signup Form</title>
+
+  <style>
+
+    body{
+      background: purple;
+      font-family: Arial;
+    }
+
+    .signup-box{
+      width: 440px;
+      background: white;
+      padding: 20px;
+      margin: 80px auto;
+      border-radius: 10px;
+    }
+
+    h2{
+      text-align: center;
+    }
+
+    input{
+      padding: 10px;
+      margin-top: 5px;
+      margin-bottom: 15px;
+    }
+
+    .row{
+      display: flex;
+      gap: 10px;
+    }
+
+    .row input{
+      width: 100%;
+    }
+
+    .ml{
+      margin-left: 23px;
+    }
+
+    .full-input{
+      width: 95%;
+    }
+
+    .signup-btn{
+      background: purple;
+      color: white;
+      padding: 10px;
+      border: none;
+      width: 100%;
+    }
+
+    .google-btn{
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+    }
+
+    img{
+      width: 20px;
+    }
+
+    p{
+      text-align: center;
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <div class="signup-box">
+
+    <h2>Sign Up</h2>
+
+    <form>
+
+      <div class="row">
+
+        <div>
+          Name <br>
+          <input type="text" placeholder="Enter Name" required>
+        </div>
+
+        <div class="ml">
+          Phone <br>
+          <input type="text" placeholder="Enter Phone" required>
+        </div>
+
+      </div>
+
+      Email <br>
+      <input type="email" placeholder="Enter Email" class="full-input" required>
+
+      Password <br>
+      <input type="password" placeholder="Enter Password" class="full-input" required>
+
+      <button type="submit" class="signup-btn">
+        Sign Up
+      </button>
+
+    </form>
+
+    <p>
+      Already Registered?
+      <a href="SignIn.html">Sign In</a>
+    </p>
+
+    <button class="google-btn">
+      <img src="Images/Google image.png">
+      Sign Up with Google
+    </button>
+
+  </div>
+
+</body>
+</html>
