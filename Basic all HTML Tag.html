@@ -19,7 +19,7 @@
         display: flex;
         justify-content: center;
         height: 60px;
-        background-color: lightgray;
+        background-color: #99ff66;
         align-items: center;
       }
 
@@ -138,6 +138,44 @@
         padding: 8px 15px;
         border-radius: 5px;
       }
+
+      /* Added CSS */
+
+      .videoGallery {
+        margin-top: 40px;
+      }
+
+      .videoGrid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        width: 90%;
+        margin: auto;
+        margin-top: 20px;
+      }
+
+      .videoCard video {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+      }
+
+      .starSection {
+        margin-top: 50px;
+      }
+
+      .starBox {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        margin-top: 20px;
+      }
+
+      .starBox svg {
+        width: 80px;
+        height: 80px;
+        fill: gold;
+      }
     </style>
   </head>
 
@@ -146,9 +184,14 @@
     <header>
       <nav>
         <a href="#Register" class="nav">Register Form</a>
-        <a href="#tableform" class="nav">Table Format</a>
+        <a href="#tables" class="nav">Table Format</a>
         <a href="#AudioVideo" class="nav">Audio/Video</a>
         <a href="#videoSection" class="nav">YouTube</a>
+
+        <!-- Added Nav -->
+        <a href="#videoGallery" class="nav">Video Gallery</a>
+        <a href="#starSection" class="nav">SVG Stars</a>
+
         <a href="#locationSection" class="nav">Location</a>
       </nav>
     </header>
@@ -330,7 +373,7 @@
       </form>
     </div>
 
-    <h2>Table</h2>
+    <h2 class="tables" id="tables">Table</h2>
 
     <table class="tableform" id="tableform">
       <tr>
@@ -422,7 +465,6 @@
           </td>
         </tr>
       </table>
-      
 
       <!-- YouTube Video -->
       <div class="videoSection" id="videoSection">
@@ -431,21 +473,79 @@
           width="600"
           height="337"
           src="https://www.youtube.com/embed/5IJycI1VJMI?autoplay=1&mute=1"
-          title="Bapuji ne Diya Dinner Party! | FULL MOVIE | Taarak Mehta Ka Ooltah Chashmah"
+          title="YouTube Video"
           frameborder="0"
-          allow="
-            accelerometer;
-            autoplay;
-            clipboard-write;
-            encrypted-media;
-            gyroscope;
-            picture-in-picture;
-            web-share;
-          "
-          referrerpolicy="strict-origin-when-cross-origin"
           allowfullscreen
         >
         </iframe>
+      </div>
+
+<div class="videoGallery" id="videoGallery">
+  <h2>Video Gallery</h2>
+
+  <div class="videoGrid">
+
+    <div class="videoCard">
+      <video controls>
+        <source src="Resource/vidssave.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="videoCard">
+      <video controls>
+        <source src="Resource/vidssave.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="videoCard">
+      <video controls>
+        <source src="Resource/vidssave.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="videoCard">
+      <video controls>
+        <source src="Resource/vidssave.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="videoCard">
+      <video controls>
+        <source src="Resource/vidssave.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+    <div class="videoCard">
+      <video controls>
+        <source src="Resource/vidssave.mp4" type="video/mp4" />
+      </video>
+    </div>
+
+  </div>
+</div>
+
+      <div class="starSection" id="starSection">
+        <h2>SVG Stars</h2>
+
+        <div class="starBox">
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.784 1.4 8.168L12 18.896l-7.334 3.867 1.4-8.168L.132 9.211l8.2-1.193z"
+            />
+          </svg>
+
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.784 1.4 8.168L12 18.896l-7.334 3.867 1.4-8.168L.132 9.211l8.2-1.193z"
+            />
+          </svg>
+
+          <svg viewBox="0 0 24 24">
+            <path
+              d="M12 .587l3.668 7.431 8.2 1.193-5.934 5.784 1.4 8.168L12 18.896l-7.334 3.867 1.4-8.168L.132 9.211l8.2-1.193z"
+            />
+          </svg>
+        </div>
       </div>
 
       <!-- Location -->
@@ -458,7 +558,6 @@
           style="border: 0"
           allowfullscreen=""
           loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
         >
         </iframe>
       </div>
