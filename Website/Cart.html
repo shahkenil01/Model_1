@@ -173,29 +173,10 @@
         background: #c91f2f;
       }
 
-      .header-frame {
-        width: 100%;
-        height: 140px;
-        display: block;
-        margin-bottom: -20px;
-      }
-
-      .footer-frame {
-        width: 100%;
-        height: 350px;
-        display: block;
-      }
-
     </style>
   </head>
   <body>
-    <iframe
-      src="Components/Header.html"
-      frameborder="0"
-      scrolling="no"
-      class="header-frame"
-    >
-    </iframe>
+    <div id="header"></div>
 
     <main>
       <section class="cartPage">
@@ -363,12 +344,20 @@
       </section>
     </main>
 
-    <iframe
-      src="Components/Footer.html"
-      frameborder="0"
-      scrolling="no"
-      class="footer-frame"
-    >
-    </iframe>
+    <div id="footer"></div>
+
+    <script>
+      fetch('Components/Header.html')
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById('header').innerHTML = data;
+        });
+
+      fetch('Components/Footer.html')
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById('footer').innerHTML = data;
+        });
+    </script>
   </body>
 </html>

@@ -148,3 +148,7 @@ footer .copyright p {
 .socials li a:hover i {
   color: #fff;
 }
+
+div#footer {
+    background-color: white;
+}

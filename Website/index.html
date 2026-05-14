@@ -1,0 +1,1011 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Page</title>
+
+    <link rel="stylesheet" href="Components/Footer.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+      /* ─── RESET ─────────────────────────────── */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Lato', sans-serif;
+        font-size: 16px;
+        color: rgba(0, 0, 0, 0.8);
+        overflow-x: hidden;
+        background: #f5f5f5;
+      }
+
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+      ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      button {
+        font-family: 'Lato', sans-serif;
+        cursor: pointer;
+        border: none;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 15px;
+      }
+
+      /* Checkbox sidebar hack */
+      #sidebarToggle {
+        display: none;
+      }
+      .catWrapper {
+        position: relative;
+        flex-shrink: 0;
+      }
+
+      .allCatTab {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: #6d4aae;
+        color: #fff;
+        padding: 9px 14px;
+        border-radius: 30px;
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+        transition: background 0.2s;
+      }
+      .allCatTab:hover {
+        background: #5a3a9a;
+      }
+      .allCatTab .fa-xmark {
+        display: none;
+      }
+      #sidebarToggle:checked ~ label .fa-bars {
+        display: none;
+      }
+      #sidebarToggle:checked ~ label .fa-xmark {
+        display: inline;
+      }
+
+      .sidebarNav {
+        max-height: 0;
+        overflow: hidden;
+        opacity: 0;
+        background: #fff;
+        position: absolute;
+        top: 46px;
+        left: 0;
+        width: 180px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition:
+          max-height 0.35s ease,
+          opacity 0.3s ease;
+        z-index: 100;
+      }
+      #sidebarToggle:checked ~ .sidebarNav {
+        max-height: 400px;
+        opacity: 1;
+      }
+
+      .sidebarNav ul {
+        padding: 10px 0;
+      }
+      .sidebarNav ul li {
+        position: relative;
+        padding: 0 10px;
+      }
+      .sidebarNav ul li > a {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 9px 6px;
+        font-size: 14px;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.8);
+        border-radius: 5px;
+        transition:
+          color 0.2s,
+          background 0.2s;
+      }
+      .sidebarNav ul li > a:hover {
+        color: #7a55c1;
+        background: #f4f0fc;
+      }
+
+      .sidebarNav ul li .submenu {
+        position: absolute;
+        top: 0;
+        left: 178px;
+        width: 150px;
+        background: #fff;
+        border: 1.5px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 6px 0;
+        opacity: 0;
+        visibility: hidden;
+        transition:
+          opacity 0.2s,
+          visibility 0.2s;
+        z-index: 200;
+      }
+      .sidebarNav ul li:hover .submenu {
+        opacity: 1;
+        visibility: visible;
+      }
+      .sidebarNav ul li .submenu a {
+        display: block;
+        padding: 8px 14px;
+        font-size: 13px;
+        color: rgba(0, 0, 0, 0.75);
+        transition:
+          background 0.15s,
+          color 0.15s;
+      }
+      .sidebarNav ul li .submenu a:hover {
+        background: #f4f0fc;
+        color: #6d4aae;
+      }
+
+      .navPart2 {
+        flex: 1;
+      }
+      .navPart2 ul {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 100%;
+        margin-left: 16px;
+      }
+      .navPart2 ul li {
+        position: relative;
+        padding-bottom: 14px;
+      }
+      .navPart2 ul li > a {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 7px 12px;
+        font-size: 15px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.7);
+        border-radius: 25px;
+        text-transform: uppercase;
+        transition: all 0.2s;
+      }
+      .navPart2 ul li > a:hover {
+        background: #f0faff;
+        color: #000;
+      }
+
+      .navPart2 ul li .submenu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: #fff;
+        border-radius: 0 0 10px 10px;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+        min-width: 148px;
+        z-index: 50;
+        padding: 6px 0;
+      }
+      .navPart2 ul li:hover .submenu {
+        display: block;
+      }
+      .navPart2 ul li .submenu a {
+        display: block;
+        padding: 9px 16px;
+        font-size: 13px;
+        font-weight: 600;
+        color: rgba(0, 0, 0, 0.9);
+        transition: background 0.15s;
+      }
+      .navPart2 ul li .submenu a:hover {
+        background: #f5f5f5;
+      }
+
+      .nav-emoji {
+        font-size: 16px;
+      }
+
+      /* ════════════════════════════════════════
+       HOME PAGE
+    ════════════════════════════════════════ */
+      .homePageWrapper {
+        background: #f5f5f5;
+      }
+
+      /* ── BANNER SLIDER ───────────────────── */
+      .homeSlider {
+        background: #fff;
+        padding: 20px 0;
+      }
+
+      .slider-wrapper {
+        position: relative;
+        overflow: hidden;
+        border-radius: 10px;
+        height: 400px;
+      }
+
+      .slider-track {
+        display: flex;
+        transition: transform 0.6s ease-in-out;
+        height: 100%;
+      }
+
+      .slide-item {
+        min-width: 100%;
+        height: 100%;
+      }
+
+      .slide-item img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 10px;
+        display: block;
+      }
+
+      /* Slider arrows */
+      .prev-btn,
+      .next-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background: #fff;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 50;
+        cursor: pointer;
+        transition: background 0.2s;
+        font-size: 18px;
+        color: #333;
+      }
+      .prev-btn {
+        left: 14px;
+      }
+      .next-btn {
+        right: 14px;
+      }
+      .prev-btn:hover,
+      .next-btn:hover {
+        background: #eee;
+      }
+
+      /* Slider dots */
+      .slider-dots {
+        display: flex;
+        justify-content: center;
+        gap: 8px;
+        margin-top: 14px;
+      }
+      .slider-dots span {
+        width: 10px;
+        height: 10px;
+        background: #ccc;
+        border-radius: 50%;
+        cursor: pointer;
+        transition: background 0.3s;
+        display: inline-block;
+      }
+      .slider-dots span.active {
+        background: #6d4aae;
+      }
+
+      /* ── PRODUCTS SECTION ─────────────────── */
+      .homeProducts {
+        padding: 30px 0;
+        width: 100%;
+        background-color: white;
+      }
+
+      .section-header {
+        margin-bottom: 20px;
+      }
+      .section-header .hd {
+        font-size: 18px;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+      .section-header p {
+        font-size: 14px;
+        color: #8b8b8b;
+      }
+
+      .productRow {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      /* 4 per row matching "four" itemView */
+      .productItem {
+        width: calc(25% - 11px);
+        background: #f1f1f1;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 7px;
+        overflow: hidden;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s;
+        display: block;
+        user-select: none;
+      }
+      .productItem:hover {
+        border-color: transparent;
+        box-shadow:
+          0 3px 6px rgba(123, 108, 108, 0.16),
+          0 3px 6px rgba(0, 0, 0, 0.23);
+      }
+
+      /* Discount badge */
+      .productItem .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        z-index: 8;
+        border-radius: 20px;
+        background: #2bbef9;
+        color: #fff;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      /* Image wrapper */
+      .productItem .imgWrapper {
+        background: #fff;
+        border-radius: 7px 7px 0 0;
+        height: 240px;
+        overflow: hidden;
+        position: relative;
+        width: 100%;
+      }
+      .productItem .imgWrapper img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+      }
+      .productItem .imgWrapper:hover img {
+        transform: scale(1.1);
+      }
+
+      /* Hover image */
+      .productItem .imgWrapper img.hover-img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        transition:
+          opacity 0.3s,
+          transform 0.3s;
+        z-index: 3;
+        pointer-events: none;
+      }
+      .productItem .imgWrapper:hover img.hover-img {
+        opacity: 1;
+        transform: scale(1.1);
+      }
+
+      /* Action buttons (fullscreen + heart) */
+      .productItem .actions {
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        z-index: 100;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        opacity: 0;
+        visibility: hidden;
+        transform: scale(0.8);
+        transition:
+          opacity 0.3s,
+          transform 0.3s,
+          visibility 0.3s;
+      }
+      .productItem:hover .actions {
+        opacity: 1;
+        visibility: visible;
+        transform: scale(1);
+      }
+      .productItem .actions a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 50%;
+        background: #fff;
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+        color: #000;
+        font-size: 14px;
+        transition:
+          background 0.2s,
+          border-color 0.2s;
+      }
+      .productItem .actions a:hover {
+        background: #ed174a;
+        border-color: #ed174a;
+        color: #fff;
+      }
+      .productItem .actions a.fav-active {
+        color: red;
+      }
+
+      /* Product info */
+      .productItem .info {
+        padding: 14px;
+        cursor: auto;
+      }
+      .productItem .info h4 {
+        font-size: 15px;
+        font-weight: 600;
+        color: rgb(46, 46, 46);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        transition: color 0.15s;
+        margin-bottom: 4px;
+      }
+      .productItem .info h4:hover {
+        color: rgba(237, 34, 23);
+      }
+
+      .text-success {
+        color: #28a745;
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .text-danger {
+        color: #dc3545;
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      /* Star rating */
+      .star-rating {
+        display: flex;
+        gap: 2px;
+        margin: 5px 0;
+      }
+      .star-rating i {
+        font-size: 13px;
+        color: #f5a623;
+      }
+      .star-rating i.empty {
+        color: #ddd;
+      }
+
+      .price-row {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      .oldPrice {
+        font-size: 15px;
+        font-weight: 700;
+        color: rgba(0, 0, 0, 0.4);
+        text-decoration: line-through;
+      }
+      .netPrice {
+        font-size: 15px;
+        font-weight: 700;
+        color: #dc3545;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <div class="homePageWrapper">
+      <section class="homeSlider">
+        <div class="container">
+          <div class="slider-wrapper">
+            <button class="prev-btn" id="prevBtn">
+              <i class="fa-solid fa-angle-left"></i>
+            </button>
+
+            <div class="slider-track" id="sliderTrack">
+              <div class="slide-item">
+                <img src="/Website/Images/Banner 1.jpg" alt="Banner 1" />
+              </div>
+              <div class="slide-item">
+                <img src="/Website/Images/Banner 2.jpg" alt="Banner 2" />
+              </div>
+              <div class="slide-item">
+                <img src="/Website/Images/Banner 3.jpg" alt="Banner 3" />
+              </div>
+            </div>
+
+            <button class="next-btn" id="nextBtn">
+              <i class="fa-solid fa-angle-right"></i>
+            </button>
+          </div>
+
+          <div class="slider-dots" id="sliderDots">
+            <span class="active" data-index="0"></span>
+            <span data-index="1"></span>
+            <span data-index="2"></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="homeProducts">
+        <div class="container">
+          <div class="section-header">
+            <h3 class="hd mb-0">Popular Products</h3>
+            <p>Do not miss the current offers until the end of March.</p>
+          </div>
+
+          <div class="productRow">
+            <!-- Product 1 -->
+            <div class="productItem">
+              <span class="badge">20%</span>
+              <div class="imgWrapper">
+                <a href="/product/1"
+                  ><img src="/Website/Images/product1-1" alt="Product 1"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/1"><h4>Men Regular Fit Casual Shirt</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star empty"></i>
+                </div>
+                <div class="price-row">
+                  <span class="oldPrice">₹999</span>
+                  <span class="netPrice">₹799</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="imgWrapper">
+                <a href="/product/2"
+                  ><img src="/Website/Images/product2-1" alt="Product 2"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/2"><h4>Premium Cotton T-Shirt</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="price-row">
+                  <span class="netPrice">₹499</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <span class="badge">15%</span>
+              <div class="imgWrapper">
+                <a href="/product/3"
+                  ><img src="/Website/Images/product3-1" alt="Product 3"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/3"><h4>Casual Blue Denim Jeans</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="price-row">
+                  <span class="oldPrice">₹1499</span>
+                  <span class="netPrice">₹1249</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="imgWrapper">
+                <a href="/product/4"
+                  ><img src="assets/images/product4.jpg" alt="Product 4"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/4"><h4>Women Floral Summer Dress</h4></a>
+                <span class="text-danger">Out of Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-regular fa-star empty"></i>
+                  <i class="fa-regular fa-star empty"></i>
+                </div>
+                <div class="price-row">
+                  <span class="netPrice">₹1199</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <span class="badge">30%</span>
+              <div class="imgWrapper">
+                <a href="/product/5"
+                  ><img src="assets/images/product5.jpg" alt="Product 5"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/5"><h4>Running Sports Sneakers</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="price-row">
+                  <span class="oldPrice">₹2999</span>
+                  <span class="netPrice">₹2099</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="imgWrapper">
+                <a href="/product/6"
+                  ><img src="assets/images/product6.jpg" alt="Product 6"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/6"><h4>Leather Handbag for Women</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star empty"></i>
+                </div>
+                <div class="price-row">
+                  <span class="netPrice">₹1599</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <span class="badge">10%</span>
+              <div class="imgWrapper">
+                <a href="/product/7"
+                  ><img src="assets/images/product7.jpg" alt="Product 7"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/7"><h4>Wireless Bluetooth Headphones</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="price-row">
+                  <span class="oldPrice">₹3499</span>
+                  <span class="netPrice">₹3149</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="imgWrapper">
+                <a href="/product/8"
+                  ><img src="assets/images/product8.jpg" alt="Product 8"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/8"><h4>Organic Green Tea 200g</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="price-row">
+                  <span class="netPrice">₹349</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <span class="badge">25%</span>
+              <div class="imgWrapper">
+                <a href="/product/9"
+                  ><img src="assets/images/product9.jpg" alt="Product 9"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/9"><h4>Men Formal Slim Fit Blazer</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-regular fa-star empty"></i>
+                  <i class="fa-regular fa-star empty"></i>
+                </div>
+                <div class="price-row">
+                  <span class="oldPrice">₹4999</span>
+                  <span class="netPrice">₹3749</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="imgWrapper">
+                <a href="/product/10"
+                  ><img src="assets/images/product10.jpg" alt="Product 10"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/10"><h4>Face Moisturizer SPF 50</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i>
+                </div>
+                <div class="price-row">
+                  <span class="netPrice">₹699</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <span class="badge">18%</span>
+              <div class="imgWrapper">
+                <a href="/product/11"
+                  ><img src="assets/images/product11.jpg" alt="Product 11"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/11"><h4>Yoga Mat Anti-Slip Premium</h4></a>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star-half-stroke"></i>
+                </div>
+                <div class="price-row">
+                  <span class="oldPrice">₹1299</span>
+                  <span class="netPrice">₹1065</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem">
+              <div class="imgWrapper">
+                <a href="/product/12"
+                  ><img src="assets/images/product12.jpg" alt="Product 12"
+                /></a>
+                <div class="actions">
+                  <a href="#" title="Quick View"
+                    ><i class="fa-solid fa-expand"></i
+                  ></a>
+                  <a href="#" title="Add to Wishlist"
+                    ><i class="fa-regular fa-heart"></i
+                  ></a>
+                </div>
+              </div>
+              <div class="info">
+                <a href="/product/12"><h4>Smart Watch Fitness Tracker</h4></a>
+                <span class="text-danger">Out of Stock</span>
+                <div class="star-rating">
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-solid fa-star"></i
+                  ><i class="fa-solid fa-star"></i>
+                  <i class="fa-regular fa-star empty"></i>
+                </div>
+                <div class="price-row">
+                  <span class="netPrice">₹2499</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+      $(function () {
+        var current = 0;
+        var total = $('#sliderTrack .slide-item').length;
+        var playing = true;
+        var timer;
+
+        function goTo(index) {
+          if (index < 0) index = total - 1;
+          if (index >= total) index = 0;
+          current = index;
+          $('#sliderTrack').css(
+            'transform',
+            'translateX(-' + current * 100 + '%)',
+          );
+          $('#sliderDots span').removeClass('active');
+          $('#sliderDots span[data-index="' + current + '"]').addClass(
+            'active',
+          );
+        }
+
+        function startAuto() {
+          timer = setInterval(function () {
+            goTo(current + 1);
+          }, 3500);
+        }
+
+        function resetAuto() {
+          clearInterval(timer);
+          startAuto();
+        }
+
+        $('#nextBtn').on('click', function () {
+          goTo(current + 1);
+          resetAuto();
+        });
+        $('#prevBtn').on('click', function () {
+          goTo(current - 1);
+          resetAuto();
+        });
+
+        $('#sliderDots span').on('click', function () {
+          goTo(parseInt($(this).data('index')));
+          resetAuto();
+        });
+
+        startAuto();
+      });
+
+      fetch('Components/Header.html')
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById('header').innerHTML = data;
+        });
+
+      fetch('Components/Footer.html')
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById('footer').innerHTML = data;
+        });
+    </script>
+  </body>
+</html>
