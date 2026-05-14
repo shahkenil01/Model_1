@@ -3,76 +3,7 @@
 <head>
   <title>Signup Form</title>
 
-  <style>
-
-    body{
-      background: purple;
-      font-family: Arial;
-    }
-
-    .signup-box{
-      width: 440px;
-      background: white;
-      padding: 20px;
-      margin: 80px auto;
-      border-radius: 10px;
-    }
-
-    h2{
-      text-align: center;
-    }
-
-    input{
-      padding: 10px;
-      margin-top: 5px;
-      margin-bottom: 15px;
-    }
-
-    .row{
-      display: flex;
-      gap: 10px;
-    }
-
-    .row input{
-      width: 100%;
-    }
-
-    .ml{
-      margin-left: 23px;
-    }
-
-    .full-input{
-      width: 95%;
-    }
-
-    .signup-btn{
-      background: purple;
-      color: white;
-      padding: 10px;
-      border: none;
-      width: 100%;
-    }
-
-    .google-btn{
-      width: 100%;
-      padding: 10px;
-      margin-top: 10px;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 5px;
-    }
-
-    img{
-      width: 20px;
-    }
-
-    p{
-      text-align: center;
-    }
-
-  </style>
+  <link rel="stylesheet" href="/Website/Sign%26SignUp.css">
 </head>
 
 <body>
@@ -81,27 +12,27 @@
 
     <h2>Sign Up</h2>
 
-    <form>
+    <form id="signupForm" onsubmit="handleSignUp(event)">
 
       <div class="row">
 
         <div>
           Name <br>
-          <input type="text" placeholder="Enter Name" required>
+          <input type="text" id="name" placeholder="Enter Name" required>
         </div>
 
         <div class="ml">
           Phone <br>
-          <input type="text" placeholder="Enter Phone" required>
+          <input type="text" id="phone" placeholder="Enter Phone" required>
         </div>
 
       </div>
 
       Email <br>
-      <input type="email" placeholder="Enter Email" class="full-input" required>
+      <input type="email" id="email" placeholder="Enter Email" class="full-input" required>
 
       Password <br>
-      <input type="password" placeholder="Enter Password" class="full-input" required>
+      <input type="password" id="password" placeholder="Enter Password" class="full-input" required>
 
       <button type="submit" class="signup-btn">
         Sign Up
@@ -115,11 +46,67 @@
     </p>
 
     <button class="google-btn">
-      <img src="Images/Google image.png">
+      <img src="Images/Google image.png" alt="Google">
       Sign Up with Google
     </button>
 
   </div>
+
+  <script>
+    function handleSignUp(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const password = document.getElementById('password').value.trim();
+
+      if (!name) {
+        alert('Please enter your name');
+        return;
+      }
+
+      if (name.length < 3) {
+        alert('Name must be at least 3 characters');
+        return;
+      }
+
+      if (!phone) {
+        alert('Please enter your phone number');
+        return;
+      }
+
+      const phoneRegex = /^[0-9]{10}$/;
+      if (!phoneRegex.test(phone)) {
+        alert('Please enter a valid 10-digit phone number');
+        return;
+      }
+
+      if (!email) {
+        alert('Please enter your email');
+        return;
+      }
+
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert('Please enter a valid email address');
+        return;
+      }
+
+      if (!password) {
+        alert('Please enter your password');
+        return;
+      }
+
+      if (password.length < 6) {
+        alert('Password must be at least 6 characters');
+        return;
+      }
+
+      alert('Account created successfully! Redirecting to Sign In...');
+      window.location.href = 'SignIn.html';
+    }
+  </script>
 
 </body>
 </html>
