@@ -1,5 +1,3 @@
-/* ============= CONTACT US STYLES ============= */
-
 .contact-banner {
   background: linear-gradient(135deg, #6d4aae 0%, #5a3a9a 100%);
   color: white;
@@ -50,6 +48,7 @@
 .contact-card-icon {
   font-size: 40px;
   margin-bottom: 15px;
+  color: #6d4aae;
 }
 
 .contact-card h3 {
@@ -158,21 +157,6 @@
   padding-bottom: 10px;
 }
 
-.map-placeholder {
-  background: linear-gradient(135deg, #f0ebf8 0%, #e8dff5 100%);
-  border-radius: 10px;
-  height: 400px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #6d4aae;
-  font-size: 18px;
-  text-align: center;
-  border: 2px dashed #6d4aae;
-}
-
-/* ============= ABOUT US STYLES ============= */
-
 .about-banner {
   background: linear-gradient(135deg, #6d4aae 0%, #5a3a9a 100%);
   color: white;
@@ -255,7 +239,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 60px;
+  font-size: 80px;
+  color: white;
 }
 
 .team-member-info {
@@ -316,10 +301,6 @@
   .contact-form-section {
     grid-template-columns: 1fr;
     gap: 30px;
-  }
-
-  .map-placeholder {
-    height: 300px;
   }
 
   .about-section h2,
