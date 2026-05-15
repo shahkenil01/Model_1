@@ -17,7 +17,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="website/CSS/Category.css" />
+    <link rel="stylesheet" href="CSS/Category.css" />
   </head>
 
   <body>
@@ -112,7 +112,6 @@
         </div>
       </section>
 
-      <!-- ELECTRONICS -->
       <section class="categorySection electronics" id="electronics">
         <div class="container">
           <div class="section-header">
@@ -382,6 +381,12 @@
 
     <div id="footer"></div>
 
+    <button
+      id="scrollTopBtn"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      &#8679;
+    </button>
     <script>
       fetch('Components/Header.html')
         .then((r) => r.text())
@@ -417,18 +422,6 @@
         });
         window.location.href = 'ProductDetail.html?' + params.toString();
       }
-
-      const btn = document.getElementById('scrollTopBtn');
-      window.addEventListener('scroll', function () {
-        btn.style.display = window.scrollY > 200 ? 'flex' : 'none';
-      });
     </script>
-
-    <button
-      id="scrollTopBtn"
-      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-    >
-      &#8679;
-    </button>
   </body>
 </html>
