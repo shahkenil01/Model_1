@@ -1,7 +1,7 @@
 .contact-banner {
   background: linear-gradient(135deg, #6d4aae 0%, #5a3a9a 100%);
   color: white;
-  padding: 60px 0;
+  padding: 20px 0 75px;
   text-align: center;
 }
 
@@ -22,13 +22,16 @@
   padding: 0 15px;
 }
 
-/* Contact Content */
 .contact-content {
-  padding: 60px 0;
+  padding: 30px 0;
   background: #fff;
+  margin-top: -50px;
 }
 
-/* Contact Info Cards */
+.map-wrapper {
+  width: 210%;
+}
+
 .contact-info-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -73,7 +76,6 @@
   text-decoration: underline;
 }
 
-/* Contact Form Section */
 .contact-form-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -148,8 +150,28 @@
   background: #5a3a9a;
 }
 
-/* Map Section */
 .map-wrapper h2 {
+  font-size: 28px;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 3px solid #6d4aae;
+  padding-bottom: 10px;
+  justify-content: center;
+  display: flex;
+}
+
+.faq-section {
+  padding: 36px 0;
+  background: #f9f7fc;
+}
+
+/* WITH this: */
+.faq-title {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.faq-title h2 {
   font-size: 28px;
   color: #333;
   margin-bottom: 20px;
@@ -157,10 +179,62 @@
   padding-bottom: 10px;
 }
 
+.faq-title p {
+  color: #666;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+.faq-box {
+  max-width: 900px;
+  margin: auto;
+}
+
+.faq-item {
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 15px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.faq-question {
+  width: 100%;
+  padding: 18px 20px;
+  border: none;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.faq-question i {
+  color: #6d4aae;
+  font-size: 14px;
+}
+
+.faq-answer {
+  display: none;
+  padding: 0 20px 20px;
+}
+
+.faq-answer p {
+  color: #666;
+  line-height: 1.7;
+  font-size: 14px;
+}
+
+.faq-item.active .faq-answer {
+  display: block;
+}
+
 .about-banner {
-  background: linear-gradient(135deg, #6d4aae 0%, #5a3a9a 100%);
+  background: #5a3a9a 100%;
   color: white;
-  padding: 60px 0;
+  padding: 20px 0 75px;
   text-align: center;
 }
 

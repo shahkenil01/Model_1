@@ -8,14 +8,19 @@
     <link rel="stylesheet" href="../Website/Components/footer.css" />
     <link rel="stylesheet" href="../Website/CSS/style.css" />
     <link rel="stylesheet" href="../Website/CSS/ContactUs&AboutUs.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
   </head>
   <body>
     <div id="header"></div>
     <section class="contact-banner">
       <div class="contact-container">
+      <div style="align-items: center; display: flex; flex-direction: column; text-align: center;">
         <h1>Contact Us</h1>
         <p>We'd love to hear from you. Get in touch with us today!</p>
+      </div>
       </div>
     </section>
 
@@ -131,6 +136,73 @@
             </form>
           </div>
 
+          <div class="faq-right">
+            <div class="faq-title">
+              <h2>Frequently Asked Questions</h2>
+            </div>
+            <section class="faq-section">
+              <div class="contact-container">
+                <div class="faq-box">
+                <div class="faq-item">
+                  <button class="faq-question">
+                    How long does delivery take?
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <div class="faq-answer">
+                    <p>
+                      Orders are usually delivered within 3-7 business days
+                      depending on your location.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question">
+                    Can I return or exchange products?
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <div class="faq-answer">
+                    <p>
+                      Yes, we offer 7 days easy return and exchange policy on
+                      eligible products.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question">
+                    Which payment methods are accepted?
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <div class="faq-answer">
+                    <p>
+                      We accept UPI, Debit Card, Credit Card, Net Banking and
+                      Cash on Delivery.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="faq-item">
+                  <button class="faq-question">
+                    How can I contact customer support?
+                    <i class="fas fa-plus"></i>
+                  </button>
+
+                  <div class="faq-answer">
+                    <p>
+                      You can contact us through phone, email or the contact
+                      form available above.
+                    </p>
+                  </div>
+                </div>
+              </div>
+              </div>
+            </section>
+          </div>
+
           <div class="map-wrapper">
             <h2>Location</h2>
             <iframe
@@ -145,7 +217,7 @@
           </div>
         </div>
       </div>
-    </section>
+    
 
     <div id="footer"></div>
 
@@ -157,6 +229,26 @@
 
         document.getElementById('contactForm').reset();
       }
+
+      const faqItems = document.querySelectorAll('.faq-item');
+
+      faqItems.forEach((item) => {
+        const question = item.querySelector('.faq-question');
+
+        question.addEventListener('click', () => {
+          item.classList.toggle('active');
+
+          const icon = question.querySelector('i');
+
+          if (item.classList.contains('active')) {
+            icon.classList.remove('fa-plus');
+            icon.classList.add('fa-minus');
+          } else {
+            icon.classList.remove('fa-minus');
+            icon.classList.add('fa-plus');
+          }
+        });
+      });
 
       fetch('Components/Header.html')
         .then((res) => res.text())
