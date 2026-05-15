@@ -1,421 +1,434 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Categories</title>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Categories</title>
 
-  <link rel="stylesheet" href="CSS/style.css">
-  <link rel="stylesheet" href="Components/header.css">
-  <link rel="stylesheet" href="Components/Footer.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="Components/header.css" />
+    <link rel="stylesheet" href="Components/Footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
 
-  <style>
+    <link rel="stylesheet" href="website/CSS/Category.css" />
+  </head>
 
-    .categoriesPage {
-      background: #f5f5f5;
-      padding: 20px 0 10px;
-    }
+  <body>
+    <div id="header"></div>
 
-    .categorySection {
-      background: #fff;
-      margin-bottom: 12px;
-      padding: 28px 0 32px;
-    }
-
-    .categorySection.fashion     .section-header h3 { color: #6d4aae; }
-    .categorySection.electronics .section-header h3 { color: #e67e22; }
-    .categorySection.bags        .section-header h3 { color: #27ae60; }
-    .categorySection.footwear    .section-header h3 { color: #e74c3c; }
-
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      margin-bottom: 22px;
-    }
-
-    .section-header .left h3 {
-      font-size: 21px;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 9px;
-      margin-bottom: 4px;
-    }
-
-    .section-header .left p {
-      color: gray;
-      font-size: 13px;
-    }
-
-    .viewAllBtn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 20px;
-      border: 2px solid #6d4aae;
-      color: #6d4aae;
-      border-radius: 30px;
-      font-size: 13px;
-      font-weight: 700;
-      text-decoration: none;
-      font-family: 'Lato', sans-serif;
-      transition: all 0.2s;
-    }
-
-    .viewAllBtn:hover {
-      background: #6d4aae;
-      color: #fff;
-    }
-
-    .productItem {
-      cursor: pointer;
-    }
-
-  </style>
-</head>
-
-<body>
-
-  <div id="header"></div>
-
-  <div class="categoriesPage">
-
-    <!-- FASHION -->
-    <section class="categorySection fashion" id="fashion">
-      <div class="container">
-        <div class="section-header">
-          <div class="left">
-            <h3><i class="fa-solid fa-shirt"></i> Fashion</h3>
-            <p>Trendy clothes for every occasion</p>
+    <div class="categoriesPage">
+      <!-- FASHION -->
+      <section class="categorySection fashion" id="fashion">
+        <div class="container">
+          <div class="section-header">
+            <div class="left">
+              <h3><i class="fa-solid fa-shirt"></i> Fashion</h3>
+              <p>Trendy clothes for every occasion</p>
+            </div>
+            <a href="#fashion" class="viewAllBtn"
+              >View All <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </div>
-          <a href="#fashion" class="viewAllBtn">View All <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="productRow">
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">20%</span>
+              <div class="imgWrapper">
+                <img
+                  src="/Website/Images/fetch.webp"
+                  alt="Black Casual Shirt"
+                />
+              </div>
+              <div class="info">
+                <h4>Black Solid Casual Shirt</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹999</span>
+                  <span class="netPrice">₹799</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749125708/kg9y4puytbq8gqym1ik3.webp"
+                  alt="Dry Fit Shirt"
+                />
+              </div>
+              <div class="info">
+                <h4>Glito Black Solid Dry-Fit Regular</h4>
+                <span class="text-danger">Out of Stock</span>
+                <div class="star-rating">★ ★ ★ ☆ ☆</div>
+                <div class="price-row">
+                  <span class="netPrice">₹1199</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">30%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287177/apjro8eqcyocotcrixvc.jpg"
+                  alt="Tie Dye Jogger"
+                />
+              </div>
+              <div class="info">
+                <h4>Altecia Tie and Dye Jogger</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ★</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹2999</span>
+                  <span class="netPrice">₹2099</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057218/roexq0lwfrwins3zdyjw.jpg"
+                  alt="Chikankari Kurta"
+                />
+              </div>
+              <div class="info">
+                <h4>Chikankari Woven Kurta</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="netPrice">₹2499</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="productRow">
+      </section>
 
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">20%</span>
-            <div class="imgWrapper">
-              <img src="/Website/Images/fetch.webp" alt="Black Casual Shirt">
+      <!-- ELECTRONICS -->
+      <section class="categorySection electronics" id="electronics">
+        <div class="container">
+          <div class="section-header">
+            <div class="left">
+              <h3>
+                <i class="fa-solid fa-mobile-screen-button"></i> Electronics
+              </h3>
+              <p>Latest gadgets at the best prices</p>
             </div>
-            <div class="info">
-              <h4>Black Solid Casual Shirt</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="oldPrice">₹999</span>
-                <span class="netPrice">₹799</span>
+            <a href="#electronics" class="viewAllBtn"
+              >View All <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="productRow">
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">15%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749286992/y2soe1z7ftucyiujelji.webp"
+                  alt="Smart Watch"
+                />
+              </div>
+              <div class="info">
+                <h4>Smart Watch Pro</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹2999</span>
+                  <span class="netPrice">₹2499</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059235/camdnbilkfktlssr5fw3.jpg"
+                  alt="Smart Watch 2"
+                />
+              </div>
+              <div class="info">
+                <h4>Smart Watch Series X</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="netPrice">₹2499</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">10%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059344/hvpx8w2rjnaeggxlyslh.webp"
+                  alt="Smart Watch 3"
+                />
+              </div>
+              <div class="info">
+                <h4>Smart Watch Lite Edition</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ★</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹1999</span>
+                  <span class="netPrice">₹1799</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg"
+                  alt="Smart Band"
+                />
+              </div>
+              <div class="info">
+                <h4>Men's Casual Smart Band</h4>
+                <span class="text-danger">Out of Stock</span>
+                <div class="star-rating">★ ★ ★ ☆ ☆</div>
+                <div class="price-row">
+                  <span class="netPrice">₹899</span>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749125708/kg9y4puytbq8gqym1ik3.webp" alt="Dry Fit Shirt">
-            </div>
-            <div class="info">
-              <h4>Glito Black Solid Dry-Fit Regular</h4>
-              <span class="text-danger">Out of Stock</span>
-              <div class="star-rating">★ ★ ★ ☆ ☆</div>
-              <div class="price-row">
-                <span class="netPrice">₹1199</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">30%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287177/apjro8eqcyocotcrixvc.jpg" alt="Tie Dye Jogger">
-            </div>
-            <div class="info">
-              <h4>Altecia Tie and Dye Jogger</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ★</div>
-              <div class="price-row">
-                <span class="oldPrice">₹2999</span>
-                <span class="netPrice">₹2099</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057218/roexq0lwfrwins3zdyjw.jpg" alt="Chikankari Kurta">
-            </div>
-            <div class="info">
-              <h4>Chikankari Woven Kurta</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="netPrice">₹2499</span>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- ELECTRONICS -->
-    <section class="categorySection electronics" id="electronics">
-      <div class="container">
-        <div class="section-header">
-          <div class="left">
-            <h3><i class="fa-solid fa-mobile-screen-button"></i> Electronics</h3>
-            <p>Latest gadgets at the best prices</p>
+      <!-- BAGS -->
+      <section class="categorySection bags" id="bags">
+        <div class="container">
+          <div class="section-header">
+            <div class="left">
+              <h3><i class="fa-solid fa-bag-shopping"></i> Bags</h3>
+              <p>Stylish bags for every style</p>
+            </div>
+            <a href="#bags" class="viewAllBtn"
+              >View All <i class="fa-solid fa-arrow-right"></i
+            ></a>
           </div>
-          <a href="#electronics" class="viewAllBtn">View All <i class="fa-solid fa-arrow-right"></i></a>
+          <div class="productRow">
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">20%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749316776/zifdpgbnt3se4esfavd4.webp"
+                  alt="Silk Bag"
+                />
+              </div>
+              <div class="info">
+                <h4>Siril Poly Silk White & Beige Bag</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹999</span>
+                  <span class="netPrice">₹799</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749317081/eahbxise3zcbcbns1cer.jpg"
+                  alt="Tote Bag"
+                />
+              </div>
+              <div class="info">
+                <h4>Cotton Co Ord Tote Bag</h4>
+                <span class="text-danger">Out of Stock</span>
+                <div class="star-rating">★ ★ ★ ☆ ☆</div>
+                <div class="price-row">
+                  <span class="netPrice">₹1199</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">30%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749316478/orfh1xk8fmny1e4xa1lq.webp"
+                  alt="Shoulder Bag"
+                />
+              </div>
+              <div class="info">
+                <h4>Siril Poly Silk Shoulder Bag</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ★</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹2999</span>
+                  <span class="netPrice">₹2099</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749058993/nwbwmkdv4cwaglumkpeo.webp"
+                  alt="Sling Bag"
+                />
+              </div>
+              <div class="info">
+                <h4>Men's Casual Sling Bag</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹999</span>
+                  <span class="netPrice">₹799</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="productRow">
+      </section>
 
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">15%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749286992/y2soe1z7ftucyiujelji.webp" alt="Smart Watch">
+      <section class="categorySection footwear" id="footwear">
+        <div class="container">
+          <div class="section-header">
+            <div class="left">
+              <h3><i class="fa-solid fa-shoe-prints"></i> Footwear</h3>
+              <p>Step out in style</p>
             </div>
-            <div class="info">
-              <h4>Smart Watch Pro</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="oldPrice">₹2999</span>
-                <span class="netPrice">₹2499</span>
+            <a href="#footwear" class="viewAllBtn"
+              >View All <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+          <div class="productRow">
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">30%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060315/grryzpqua6batygfuhdp.webp"
+                  alt="Sports Shoes"
+                />
+              </div>
+              <div class="info">
+                <h4>Sports Shoes Running Edition</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ★</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹2999</span>
+                  <span class="netPrice">₹2099</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057036/clbdkulkvg8d5umyqtcy.jpg"
+                  alt="Sports Shoes 2"
+                />
+              </div>
+              <div class="info">
+                <h4>Sports Shoes Flex Series</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ★</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹2999</span>
+                  <span class="netPrice">₹2099</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <span class="badge">20%</span>
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060456/zq6ijswkrrpkrnzimnvp.webp"
+                  alt="Summer Sandals"
+                />
+              </div>
+              <div class="info">
+                <h4>Women Summer Sandals</h4>
+                <span class="text-danger">Out of Stock</span>
+                <div class="star-rating">★ ★ ★ ☆ ☆</div>
+                <div class="price-row">
+                  <span class="netPrice">₹1199</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="productItem" onclick="goToDetail(this)">
+              <div class="imgWrapper">
+                <img
+                  src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749058993/nwbwmkdv4cwaglumkpeo.webp"
+                  alt="Casual Loafers"
+                />
+              </div>
+              <div class="info">
+                <h4>Men's Casual Loafers</h4>
+                <span class="text-success">In Stock</span>
+                <div class="star-rating">★ ★ ★ ★ ☆</div>
+                <div class="price-row">
+                  <span class="oldPrice">₹999</span>
+                  <span class="netPrice">₹799</span>
+                </div>
               </div>
             </div>
           </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059235/camdnbilkfktlssr5fw3.jpg" alt="Smart Watch 2">
-            </div>
-            <div class="info">
-              <h4>Smart Watch Series X</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="netPrice">₹2499</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">10%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059344/hvpx8w2rjnaeggxlyslh.webp" alt="Smart Watch 3">
-            </div>
-            <div class="info">
-              <h4>Smart Watch Lite Edition</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ★</div>
-              <div class="price-row">
-                <span class="oldPrice">₹1999</span>
-                <span class="netPrice">₹1799</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg" alt="Smart Band">
-            </div>
-            <div class="info">
-              <h4>Men's Casual Smart Band</h4>
-              <span class="text-danger">Out of Stock</span>
-              <div class="star-rating">★ ★ ★ ☆ ☆</div>
-              <div class="price-row">
-                <span class="netPrice">₹899</span>
-              </div>
-            </div>
-          </div>
-
         </div>
-      </div>
-    </section>
+      </section>
+    </div>
 
-    <!-- BAGS -->
-    <section class="categorySection bags" id="bags">
-      <div class="container">
-        <div class="section-header">
-          <div class="left">
-            <h3><i class="fa-solid fa-bag-shopping"></i> Bags</h3>
-            <p>Stylish bags for every style</p>
-          </div>
-          <a href="#bags" class="viewAllBtn">View All <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="productRow">
+    <div id="footer"></div>
 
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">20%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749316776/zifdpgbnt3se4esfavd4.webp" alt="Silk Bag">
-            </div>
-            <div class="info">
-              <h4>Siril Poly Silk White & Beige Bag</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="oldPrice">₹999</span>
-                <span class="netPrice">₹799</span>
-              </div>
-            </div>
-          </div>
+    <script>
+      fetch('Components/Header.html')
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById('header').innerHTML = d;
+        });
 
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749317081/eahbxise3zcbcbns1cer.jpg" alt="Tote Bag">
-            </div>
-            <div class="info">
-              <h4>Cotton Co Ord Tote Bag</h4>
-              <span class="text-danger">Out of Stock</span>
-              <div class="star-rating">★ ★ ★ ☆ ☆</div>
-              <div class="price-row">
-                <span class="netPrice">₹1199</span>
-              </div>
-            </div>
-          </div>
+      fetch('Components/Footer.html')
+        .then((r) => r.text())
+        .then((d) => {
+          document.getElementById('footer').innerHTML = d;
+        });
 
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">30%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749316478/orfh1xk8fmny1e4xa1lq.webp" alt="Shoulder Bag">
-            </div>
-            <div class="info">
-              <h4>Siril Poly Silk Shoulder Bag</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ★</div>
-              <div class="price-row">
-                <span class="oldPrice">₹2999</span>
-                <span class="netPrice">₹2099</span>
-              </div>
-            </div>
-          </div>
+      function goToDetail(item) {
+        const name = item.querySelector('.info h4')?.innerText || '';
+        const img = item.querySelector('.imgWrapper img')?.src || '';
+        const netP = item.querySelector('.netPrice')?.innerText || '';
+        const oldP = item.querySelector('.oldPrice')?.innerText || '';
+        const badge = item.querySelector('.badge')?.innerText || '';
+        const inStock = item.querySelector('.text-success') ? 'true' : 'false';
+        const stars = (
+          item.querySelector('.star-rating')?.innerText.match(/★/g) || []
+        ).length;
 
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749058993/nwbwmkdv4cwaglumkpeo.webp" alt="Sling Bag">
-            </div>
-            <div class="info">
-              <h4>Men's Casual Sling Bag</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="oldPrice">₹999</span>
-                <span class="netPrice">₹799</span>
-              </div>
-            </div>
-          </div>
+        const params = new URLSearchParams({
+          name,
+          img,
+          price: netP,
+          old: oldP,
+          disc: badge,
+          stock: inStock,
+          stars,
+        });
+        window.location.href = 'ProductDetail.html?' + params.toString();
+      }
 
-        </div>
-      </div>
-    </section>
+      const btn = document.getElementById('scrollTopBtn');
+      window.addEventListener('scroll', function () {
+        btn.style.display = window.scrollY > 200 ? 'flex' : 'none';
+      });
+    </script>
 
-    <section class="categorySection footwear" id="footwear">
-      <div class="container">
-        <div class="section-header">
-          <div class="left">
-            <h3><i class="fa-solid fa-shoe-prints"></i> Footwear</h3>
-            <p>Step out in style</p>
-          </div>
-          <a href="#footwear" class="viewAllBtn">View All <i class="fa-solid fa-arrow-right"></i></a>
-        </div>
-        <div class="productRow">
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">30%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060315/grryzpqua6batygfuhdp.webp" alt="Sports Shoes">
-            </div>
-            <div class="info">
-              <h4>Sports Shoes Running Edition</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ★</div>
-              <div class="price-row">
-                <span class="oldPrice">₹2999</span>
-                <span class="netPrice">₹2099</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057036/clbdkulkvg8d5umyqtcy.jpg" alt="Sports Shoes 2">
-            </div>
-            <div class="info">
-              <h4>Sports Shoes Flex Series</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ★</div>
-              <div class="price-row">
-                <span class="oldPrice">₹2999</span>
-                <span class="netPrice">₹2099</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <span class="badge">20%</span>
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060456/zq6ijswkrrpkrnzimnvp.webp" alt="Summer Sandals">
-            </div>
-            <div class="info">
-              <h4>Women Summer Sandals</h4>
-              <span class="text-danger">Out of Stock</span>
-              <div class="star-rating">★ ★ ★ ☆ ☆</div>
-              <div class="price-row">
-                <span class="netPrice">₹1199</span>
-              </div>
-            </div>
-          </div>
-
-          <div class="productItem" onclick="goToDetail(this)">
-            <div class="imgWrapper">
-              <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749058993/nwbwmkdv4cwaglumkpeo.webp" alt="Casual Loafers">
-            </div>
-            <div class="info">
-              <h4>Men's Casual Loafers</h4>
-              <span class="text-success">In Stock</span>
-              <div class="star-rating">★ ★ ★ ★ ☆</div>
-              <div class="price-row">
-                <span class="oldPrice">₹999</span>
-                <span class="netPrice">₹799</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-  </div>
-
-  <div id="footer"></div>
-
-  <script>
-
-    fetch('Components/Header.html')
-      .then(r => r.text())
-      .then(d => { document.getElementById('header').innerHTML = d; });
-
-    fetch('Components/Footer.html')
-      .then(r => r.text())
-      .then(d => { document.getElementById('footer').innerHTML = d; });
-
-    function goToDetail(item) {
-      const name    = item.querySelector('.info h4')?.innerText || '';
-      const img     = item.querySelector('.imgWrapper img')?.src || '';
-      const netP    = item.querySelector('.netPrice')?.innerText || '';
-      const oldP    = item.querySelector('.oldPrice')?.innerText || '';
-      const badge   = item.querySelector('.badge')?.innerText || '';
-      const inStock = item.querySelector('.text-success') ? 'true' : 'false';
-      const stars   = (item.querySelector('.star-rating')?.innerText.match(/★/g) || []).length;
-
-      const params = new URLSearchParams({ name, img, price: netP, old: oldP, disc: badge, stock: inStock, stars });
-      window.location.href = 'ProductDetail.html?' + params.toString();
-    }
-
-  </script>
-
-</body>
+    <button
+      id="scrollTopBtn"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >
+      &#8679;
+    </button>
+  </body>
 </html>
