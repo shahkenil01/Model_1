@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment - Checkout</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="/Website/Components/Header.css" />
+    <link rel="stylesheet" href="/Website/Components/Footer.css" />
+    <link rel="stylesheet" href="/Website/CSS/Payment.css" />
+  </head>
+  <body>
+
+    <div id="header"></div>
+
+    <div class="CheckoutHeader">
+      <h1>Checkout</h1>
+      <p>Complete your payment</p>
+    </div>
+
+    <div class="container">
+      <div class="payment-wrapper">
+        <div class="payment-section">
+          <h2 class="section-title">Order Summary</h2>
+
+          <div class="order-item">
+            <span>VNEED Embroidered Rayon Kurta Pant Set (1x)</span>
+            <span>₹300</span>
+          </div>
+
+          <div class="order-item">
+            <span>Premium Cotton T-Shirt (2x)</span>
+            <span>₹1000</span>
+          </div>
+
+          <div class="order-item">
+            <span>Men Checkered Long Sleeve Shirt (1x)</span>
+            <span>₹1200</span>
+          </div>
+
+          <div class="order-item">
+            <span>Subtotal</span>
+            <span>₹2500</span>
+          </div>
+
+          <div class="order-item">
+            <span>GST (12%)</span>
+            <span>₹300</span>
+          </div>
+
+          <div class="order-item">
+            <span>Delivery Charge</span>
+            <span>₹45</span>
+          </div>
+
+          <div class="total-row">
+            <span>Total Amount</span>
+            <span>₹2845</span>
+          </div>
+        </div>
+
+        <div class="payment-section">
+          <h2 class="section-title">Payment Method</h2>
+
+          <div class="payment-methods">
+            <div class="payment-option" onclick="selectPayment('card')">
+              <input type="radio" id="card" name="payment" value="card" />
+              <label for="card">
+                <i class="fas fa-credit-card"></i> Credit/Debit Card
+                <span>Visa, Mastercard, RuPay</span>
+              </label>
+            </div>
+
+            <div class="payment-option" onclick="selectPayment('upi')">
+              <input type="radio" id="upi" name="payment" value="upi" />
+              <label for="upi">
+                <i class="fas fa-mobile-alt"></i> UPI
+                <span>Google Pay, PhonePe, Paytm</span>
+              </label>
+            </div>
+
+            <div class="payment-option" onclick="selectPayment('bank')">
+              <input type="radio" id="bank" name="payment" value="bank" />
+              <label for="bank">
+                <i class="fas fa-university"></i> Net Banking
+                <span>All major banks</span>
+              </label>
+            </div>
+
+            <div class="payment-option" onclick="selectPayment('cod')">
+              <input type="radio" id="cod" name="payment" value="cod" />
+              <label for="cod">
+                <i class="fas fa-truck"></i> Cash on Delivery
+                <span>Pay when you receive</span>
+              </label>
+            </div>
+          </div>
+
+          <div id="cardForm" class="form-section">
+            <div class="form-group">
+              <label>Card Number</label>
+              <input type="text" placeholder="1234 5678 9012 3456" />
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Expiry Date</label>
+                <input type="text" placeholder="MM/YY" />
+              </div>
+              <div class="form-group">
+                <label>CVV</label>
+                <input type="text" placeholder="123" />
+              </div>
+            </div>
+          </div>
+
+          <div id="upiForm" class="form-section">
+            <div class="form-group">
+              <label>UPI ID</label>
+              <input type="text" placeholder="yourname@upi" />
+            </div>
+          </div>
+
+          <div id="bankForm" class="form-section">
+            <div class="form-group">
+              <label>Select Bank</label>
+              <select>
+                <option>-- Select Bank --</option>
+                <option>HDFC Bank</option>
+                <option>ICICI Bank</option>
+                <option>SBI Bank</option>
+                <option>Axis Bank</option>
+                <option>Kotak Bank</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="button-group">
+            <button class="pay-btn" onclick="processPayment()">
+              <i class="fas fa-lock"></i> Pay Now
+            </button>
+            <button class="cancel-btn" onclick="goBack()">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <script>
+      let selectedPaymentMethod = null;
+
+      function selectPayment(method) {
+        selectedPaymentMethod = method;
+
+        document.querySelectorAll('input[name="payment"]').forEach((radio) => {
+          radio.checked = false;
+        });
+        document.getElementById(method).checked = true;
+
+        document.querySelectorAll('.payment-option').forEach((option) => {
+          option.classList.remove('selected');
+        });
+        event.currentTarget.classList.add('selected');
+
+        document.querySelectorAll('.form-section').forEach((form) => {
+          form.classList.remove('active');
+        });
+
+        if (method === 'card') {
+          document.getElementById('cardForm').classList.add('active');
+        } else if (method === 'upi') {
+          document.getElementById('upiForm').classList.add('active');
+        } else if (method === 'bank') {
+          document.getElementById('bankForm').classList.add('active');
+        }
+      }
+
+      function processPayment() {
+        if (!selectedPaymentMethod) {
+          alert('Please select a payment method');
+          return;
+        }
+
+        const methods = {
+          card: 'Credit/Debit Card',
+          upi: 'UPI',
+          bank: 'Net Banking',
+          cod: 'Cash on Delivery',
+        };
+
+        alert(
+          `Payment Successful!\n\nAmount: ₹2845\nMethod: ${methods[selectedPaymentMethod]}\n\nThank you for your order!`,
+        );
+
+        window.location.href = 'Cart.html';
+      }
+
+      function goBack() {
+        window.location.href = 'Cart.html';
+      }
+
+      fetch('Components/Header.html')
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById('header').innerHTML = data;
+        });
+
+      fetch('Components/Footer.html')
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById('footer').innerHTML = data;
+        });
+    </script>
+  </body>
+</html>

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart Page</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
 
     <link rel="stylesheet" href="Components/Header.css" />
     <link rel="stylesheet" href="Components/Footer.css" />
@@ -39,7 +39,10 @@
                     <td>
                       <div class="cartItemimgWrapper">
                         <div class="imgWrapper">
-                          <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg" alt="" />
+                          <img
+                            src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg"
+                            alt=""
+                          />
                         </div>
 
                         <div class="info">
@@ -59,7 +62,15 @@
                     <td>₹300</td>
 
                     <td>
-                      <div class="quantity-box">1</div>
+                      <div class="quantity-box">
+                        <button class="qty-btn" onclick="decreaseQty(this)">
+                          -
+                        </button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-btn" onclick="increaseQty(this)">
+                          +
+                        </button>
+                      </div>
                     </td>
 
                     <td>₹300</td>
@@ -75,7 +86,10 @@
                     <td>
                       <div class="cartItemimgWrapper">
                         <div class="imgWrapper">
-                          <img src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287172/x6cyzvp91ahzoop7x1or.webp" alt="" />
+                          <img
+                            src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287172/x6cyzvp91ahzoop7x1or.webp"
+                            alt=""
+                          />
                         </div>
 
                         <div class="info">
@@ -94,7 +108,15 @@
                     <td>₹500</td>
 
                     <td>
-                      <div class="quantity-box">2</div>
+                      <div class="quantity-box">
+                        <button class="qty-btn" onclick="decreaseQty(this)">
+                          -
+                        </button>
+                        <span class="qty-value">2</span>
+                        <button class="qty-btn" onclick="increaseQty(this)">
+                          +
+                        </button>
+                      </div>
                     </td>
 
                     <td>₹1000</td>
@@ -110,7 +132,10 @@
                     <td>
                       <div class="cartItemimgWrapper">
                         <div class="imgWrapper">
-                          <img src="	https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059106/rifgdw2ore2uzswa2vcg.webp" alt="" />
+                          <img
+                            src="	https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059106/rifgdw2ore2uzswa2vcg.webp"
+                            alt=""
+                          />
                         </div>
 
                         <div class="info">
@@ -130,7 +155,15 @@
                     <td>₹1200</td>
 
                     <td>
-                      <div class="quantity-box">1</div>
+                      <div class="quantity-box">
+                        <button class="qty-btn" onclick="decreaseQty(this)">
+                          -
+                        </button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-btn" onclick="increaseQty(this)">
+                          +
+                        </button>
+                      </div>
                     </td>
 
                     <td>₹1200</td>
@@ -169,7 +202,7 @@
                   <span>₹2845</span>
                 </div>
 
-                <button class="checkout-btn">
+                <button class="checkout-btn" onclick="goToCheckout()">
                   <i class="fas fa-shopping-bag"></i>
                   Checkout
                 </button>
@@ -183,15 +216,82 @@
     <div id="footer"></div>
 
     <script>
+      function increaseQty(button) {
+        let qty = button.parentElement.querySelector('.qty-value');
+        let value = Number(qty.innerHTML);
+
+        value = value + 1;
+
+        qty.innerHTML = value;
+
+        updatePrice();
+      }
+
+      function decreaseQty(button) {
+        let qty = button.parentElement.querySelector('.qty-value');
+        let value = Number(qty.innerHTML);
+
+        if (value > 1) {
+          value = value - 1;
+
+          qty.innerHTML = value;
+
+          updatePrice();
+        }
+      }
+
+      function updatePrice() {
+        let rows = document.querySelectorAll('tbody tr');
+
+        let subtotal = 0;
+
+        for (let i = 0; i < rows.length; i++) {
+          let priceText = rows[i].cells[1].innerHTML;
+
+          priceText = priceText.replace('₹', '');
+
+          let price = Number(priceText);
+
+          let qty = Number(rows[i].querySelector('.qty-value').innerHTML);
+
+          let total = price * qty;
+
+          rows[i].cells[3].innerHTML = '₹' + total;
+
+          subtotal = subtotal + total;
+        }
+
+        let gst = Math.round((subtotal * 12) / 100);
+
+        let delivery = 45;
+
+        let finalTotal = subtotal + gst + delivery;
+
+        let cartRows = document.querySelectorAll('.cart-row span:last-child');
+
+        cartRows[0].innerHTML = '₹' + subtotal;
+        cartRows[1].innerHTML = '₹' + gst;
+        cartRows[2].innerHTML = '₹' + delivery;
+        cartRows[3].innerHTML = '₹' + finalTotal;
+      }
+
+      function goToCheckout() {
+        window.location = '/Website/Payment.html';
+      }
+
       fetch('Components/Header.html')
-        .then((res) => res.text())
-        .then((data) => {
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (data) {
           document.getElementById('header').innerHTML = data;
         });
 
       fetch('Components/Footer.html')
-        .then((res) => res.text())
-        .then((data) => {
+        .then(function (response) {
+          return response.text();
+        })
+        .then(function (data) {
           document.getElementById('footer').innerHTML = data;
         });
     </script>
