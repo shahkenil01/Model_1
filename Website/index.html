@@ -72,7 +72,7 @@
 
           <div class="info">
 
-            <h4>Black solid casual shirt</h4>
+            <h4>Krishs Joshi Brand:Nadiad</h4>
 
             <span class="text-success">In Stock</span>
 
@@ -520,6 +520,36 @@
       document.getElementById("footer").innerHTML = data;
     });
 
+  </script>
+
+
+  <script>
+    document.querySelectorAll('.productItem').forEach(function(item) {
+      item.style.cursor = 'pointer';
+
+      item.addEventListener('click', function() {
+        const name     = item.querySelector('.info h4')?.innerText || '';
+        const img      = item.querySelector('.imgWrapper img')?.src || '';
+        const netP     = item.querySelector('.netPrice')?.innerText || '';
+        const oldP     = item.querySelector('.oldPrice')?.innerText || '';
+        const badge    = item.querySelector('.badge')?.innerText    || '';
+        const inStock  = item.querySelector('.text-success') ? 'true' : 'false';
+        const starText = item.querySelector('.star-rating')?.innerText || '';
+        const stars    = (starText.match(/★/g) || []).length;
+
+        const params = new URLSearchParams({
+          name:  name,
+          img:   img,
+          price: netP,
+          old:   oldP,
+          disc:  badge,
+          stock: inStock,
+          stars: stars
+        });
+
+        window.location.href = 'ProductDetail.html?' + params.toString();
+      });
+    });
   </script>
 
 </body>
