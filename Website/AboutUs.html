@@ -131,11 +131,16 @@
 
     <div id="footer"></div>
 
-    <script>
+  <script src="/Website/JS/auth.js"></script>
+  <script src="/Website/JS/cart.js"></script>
+
+<script>
       fetch('Components/Header.html')
         .then((res) => res.text())
         .then((data) => {
           document.getElementById('header').innerHTML = data;
+          if(typeof updateHeaderUI==="function"){updateHeaderUI();}
+          if(typeof updateCartCount==="function"){updateCartCount();}
         });
 
       fetch('Components/Footer.html')

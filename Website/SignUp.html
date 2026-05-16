@@ -2,30 +2,23 @@
 <html>
 <head>
   <title>Signup Form</title>
-
   <link rel="stylesheet" href="/Website/CSS/Sign&SignUp.css">
 </head>
-
 <body>
 
   <div class="signup-box">
-
     <h2>Sign Up</h2>
 
     <form id="signupForm" onsubmit="handleSignUp(event)">
-
       <div class="row">
-
         <div>
           Name <br>
           <input type="text" id="name" placeholder="Enter Name" required>
         </div>
-
         <div class="ml">
           Phone <br>
           <input type="text" id="phone" placeholder="Enter Phone" required>
         </div>
-
       </div>
 
       Email <br>
@@ -34,79 +27,19 @@
       Password <br>
       <input type="password" id="password" placeholder="Enter Password" class="full-input" required>
 
-      <button type="submit" class="signup-btn">
-        Sign Up
-      </button>
-
+      <button type="submit" class="signup-btn">Sign Up</button>
     </form>
 
-    <p>
-      Already Registered?
-      <a href="SignIn.html">Sign In</a>
-    </p>
+    <p>Already Registered? <a href="SignIn.html">Sign In</a></p>
 
     <button class="google-btn">
       <img src="Images/Google image.png" alt="Google">
       Sign Up with Google
     </button>
-
   </div>
 
-  <script>
-    function handleSignUp(event) {
-      event.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const phone = document.getElementById('phone').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const password = document.getElementById('password').value.trim();
-
-      if (!name) {
-        alert('Please enter your name');
-        return;
-      }
-
-      if (name.length < 3) {
-        alert('Name must be at least 3 characters');
-        return;
-      }
-
-      if (!phone) {
-        alert('Please enter your phone number');
-        return;
-      }
-
-      const phoneRegex = /^[0-9]{10}$/;
-      if (!phoneRegex.test(phone)) {
-        alert('Please enter a valid 10-digit phone number');
-        return;
-      }
-
-      if (!email) {
-        alert('Please enter your email');
-        return;
-      }
-
-      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailRegex.test(email)) {
-        alert('Please enter a valid email address');
-        return;
-      }
-
-      if (!password) {
-        alert('Please enter your password');
-        return;
-      }
-
-      if (password.length < 6) {
-        alert('Password must be at least 6 characters');
-        return;
-      }
-
-      alert('Account created successfully! Redirecting to Sign In...');
-      window.location.href = 'SignIn.html';
-    }
-  </script>
+  <!-- auth.js handles handleSignUp() -->
+  <script src="/Website/JS/auth.js"></script>
 
 </body>
 </html>

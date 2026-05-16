@@ -76,10 +76,10 @@
             </div>
 
             <div class="actionRow">
-              <button class="btn-cart">
+              <button class="btn-cart" onclick="handleAddToCart()">
                 <i class="fa-solid fa-bag-shopping"></i> Add to Cart
               </button>
-              <button class="btn-buy">Buy Now</button>
+              <button class="btn-buy" onclick="handleBuyNow()">Buy Now</button>
             </div>
 
             <hr class="divider" />
@@ -203,10 +203,21 @@
         btn.classList.add('active');
       }
 
+      function handleAddToCart() {
+        addToCart(productName, netPrice, productImg);
+      }
+
+      function handleBuyNow() {
+        addToCart(productName, netPrice, productImg);
+        window.location.href = '/Website/Payment.html';
+      }
+
       fetch('Components/Header.html')
         .then((r) => r.text())
         .then((d) => {
           document.getElementById('header').innerHTML = d;
+          if(typeof updateHeaderUI==="function"){updateHeaderUI();}
+          if(typeof updateCartCount==="function"){updateCartCount();}
         });
 
       fetch('Components/Footer.html')
@@ -214,6 +225,7 @@
         .then((d) => {
           document.getElementById('footer').innerHTML = d;
         });
-    </script>
+    </script>      <script src="/Website/JS/auth.js"></script>
+    <script src="/Website/JS/cart.js"></script>
   </body>
 </html>

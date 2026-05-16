@@ -4,12 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cart Page</title>
-    <link rel="stylesheet" href="style.css" />
-
-    <link rel="stylesheet" href="Components/Header.css" />
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="Components/header.css" />
     <link rel="stylesheet" href="Components/Footer.css" />
-
     <link rel="stylesheet" href="/Website/CSS/Cart.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   </head>
   <body>
     <div id="header"></div>
@@ -19,281 +18,71 @@
         <div class="container">
           <h2>Your Cart</h2>
 
-          <p>There are <span class="text-red">3</span> products in your cart</p>
+          <div id="cartEmpty" style="display:none; text-align:center; padding:60px 0;">
+            <i class="fa-solid fa-bag-shopping" style="font-size:60px; color:#6d4aae; opacity:0.3;"></i>
+            <p style="font-size:20px; margin-top:16px; color:#888;">Your cart is empty!</p>
+            <a href="/Website/index.html" style="display:inline-block; margin-top:20px; background:#6d4aae; color:#fff; padding:12px 30px; border-radius:30px; font-weight:700; text-decoration:none;">Continue Shopping</a>
+          </div>
 
-          <div class="cart-wrapper">
-            <div class="cart-left">
-              <table>
-                <thead>
-                  <tr>
-                    <th>Products</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Subtotal</th>
-                    <th>Remove</th>
-                  </tr>
-                </thead>
+          <!-- Cart content -->
+          <div id="cartBox">
+            <p>There are <span class="text-red" id="cartItemCount">0</span> products in your cart</p>
 
-                <tbody>
-                  <tr>
-                    <td>
-                      <div class="cartItemimgWrapper">
-                        <div class="imgWrapper">
-                          <img
-                            src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg"
-                            alt=""
-                          />
-                        </div>
+            <div class="cart-wrapper">
+              <div class="cart-left">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Products</th>
+                      <th>Price</th>
+                      <th>Quantity</th>
+                      <th>Subtotal</th>
+                      <th>Remove</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cartTableBody">
+                  </tbody>
+                </table>
+              </div>
 
-                        <div class="info">
-                          <h6>VNEED Embroidered Rayon Kurta Pant Set</h6>
-
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td>₹300</td>
-
-                    <td>
-                      <div class="quantity-box">
-                        <button class="qty-btn" onclick="decreaseQty(this)">
-                          -
-                        </button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-btn" onclick="increaseQty(this)">
-                          +
-                        </button>
-                      </div>
-                    </td>
-
-                    <td>₹300</td>
-
-                    <td>
-                      <span class="remove">
-                        <i class="fas fa-times"></i>
-                      </span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="cartItemimgWrapper">
-                        <div class="imgWrapper">
-                          <img
-                            src="https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287172/x6cyzvp91ahzoop7x1or.webp"
-                            alt=""
-                          />
-                        </div>
-
-                        <div class="info">
-                          <h6>Premium Cotton T-Shirt</h6>
-
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td>₹500</td>
-
-                    <td>
-                      <div class="quantity-box">
-                        <button class="qty-btn" onclick="decreaseQty(this)">
-                          -
-                        </button>
-                        <span class="qty-value">2</span>
-                        <button class="qty-btn" onclick="increaseQty(this)">
-                          +
-                        </button>
-                      </div>
-                    </td>
-
-                    <td>₹1000</td>
-
-                    <td>
-                      <span class="remove">
-                        <i class="fas fa-times"></i>
-                      </span>
-                    </td>
-                  </tr>
-
-                  <tr>
-                    <td>
-                      <div class="cartItemimgWrapper">
-                        <div class="imgWrapper">
-                          <img
-                            src="	https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059106/rifgdw2ore2uzswa2vcg.webp"
-                            alt=""
-                          />
-                        </div>
-
-                        <div class="info">
-                          <h6>men checkered long sleeve casual shirt</h6>
-
-                          <div class="rating">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                          </div>
-                        </div>
-                      </div>
-                    </td>
-
-                    <td>₹1200</td>
-
-                    <td>
-                      <div class="quantity-box">
-                        <button class="qty-btn" onclick="decreaseQty(this)">
-                          -
-                        </button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-btn" onclick="increaseQty(this)">
-                          +
-                        </button>
-                      </div>
-                    </td>
-
-                    <td>₹1200</td>
-
-                    <td>
-                      <span class="remove">
-                        <i class="fas fa-times"></i>
-                      </span>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-
-            <div class="cart-right">
-              <div class="cartDetails">
-                <h4>CART TOTALS</h4>
-
-                <div class="cart-row">
-                  <span>Subtotal</span>
-                  <span>₹2500</span>
+              <div class="cart-right">
+                <div class="cartDetails">
+                  <h4>CART TOTALS</h4>
+                  <div class="cart-row"><span>Subtotal</span><span>₹0</span></div>
+                  <div class="cart-row"><span>GST (12%)</span><span>₹0</span></div>
+                  <div class="cart-row"><span>Delivery Charge</span><span>₹0</span></div>
+                  <div class="cart-row total"><span>Total</span><span>₹0</span></div>
+                  <button class="checkout-btn" onclick="goToCheckout()">
+                    <i class="fas fa-shopping-bag"></i> Checkout
+                  </button>
                 </div>
-
-                <div class="cart-row">
-                  <span>GST (12%)</span>
-                  <span>₹300</span>
-                </div>
-
-                <div class="cart-row">
-                  <span>Delivery Charge</span>
-                  <span>₹45</span>
-                </div>
-
-                <div class="cart-row total">
-                  <span>Total</span>
-                  <span>₹2845</span>
-                </div>
-
-                <button class="checkout-btn" onclick="goToCheckout()">
-                  <i class="fas fa-shopping-bag"></i>
-                  Checkout
-                </button>
               </div>
             </div>
           </div>
+
         </div>
       </section>
     </main>
 
     <div id="footer"></div>
 
+    <script src="/Website/JS/auth.js"></script>
+    <script src="/Website/JS/cart.js"></script>
+
     <script>
-      function increaseQty(button) {
-        let qty = button.parentElement.querySelector('.qty-value');
-        let value = Number(qty.innerHTML);
-
-        value = value + 1;
-
-        qty.innerHTML = value;
-
-        updatePrice();
-      }
-
-      function decreaseQty(button) {
-        let qty = button.parentElement.querySelector('.qty-value');
-        let value = Number(qty.innerHTML);
-
-        if (value > 1) {
-          value = value - 1;
-
-          qty.innerHTML = value;
-
-          updatePrice();
-        }
-      }
-
-      function updatePrice() {
-        let rows = document.querySelectorAll('tbody tr');
-
-        let subtotal = 0;
-
-        for (let i = 0; i < rows.length; i++) {
-          let priceText = rows[i].cells[1].innerHTML;
-
-          priceText = priceText.replace('₹', '');
-
-          let price = Number(priceText);
-
-          let qty = Number(rows[i].querySelector('.qty-value').innerHTML);
-
-          let total = price * qty;
-
-          rows[i].cells[3].innerHTML = '₹' + total;
-
-          subtotal = subtotal + total;
-        }
-
-        let gst = Math.round((subtotal * 12) / 100);
-
-        let delivery = 45;
-
-        let finalTotal = subtotal + gst + delivery;
-
-        let cartRows = document.querySelectorAll('.cart-row span:last-child');
-
-        cartRows[0].innerHTML = '₹' + subtotal;
-        cartRows[1].innerHTML = '₹' + gst;
-        cartRows[2].innerHTML = '₹' + delivery;
-        cartRows[3].innerHTML = '₹' + finalTotal;
-      }
-
-      function goToCheckout() {
-        window.location = '/Website/Payment.html';
-      }
-
       fetch('Components/Header.html')
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (data) {
-          document.getElementById('header').innerHTML = data;
+        .then(function(r){ return r.text(); })
+        .then(function(d){
+          document.getElementById('header').innerHTML = d;
+          if (typeof updateHeaderUI === 'function') updateHeaderUI();
+          if (typeof updateCartCount === 'function') updateCartCount();
         });
 
       fetch('Components/Footer.html')
-        .then(function (response) {
-          return response.text();
-        })
-        .then(function (data) {
-          document.getElementById('footer').innerHTML = data;
-        });
+        .then(function(r){ return r.text(); })
+        .then(function(d){ document.getElementById('footer').innerHTML = d; });
+
+      renderCartPage();
     </script>
   </body>
 </html>
