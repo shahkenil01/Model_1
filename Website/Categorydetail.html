@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Category</title>
+
+    <link rel="stylesheet" href="CSS/style.css" />
+    <link rel="stylesheet" href="Components/header.css" />
+    <link rel="stylesheet" href="Components/Footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="CSS/Categorydetail.css" />
+  </head>
+
+  <body>
+    <div id="header"></div>
+
+    <div class="catDetailPage">
+      <div class="container">
+
+        <div class="catDetailLayout">
+
+          <aside class="filterSidebar">
+            <div class="filterBox">
+              <h4 class="filterTitle"><i class="fa-solid fa-sliders"></i> Filters</h4>
+
+              <div class="filterGroup">
+                <h5 class="filterGroupTitle">Sort by Price</h5>
+                <label class="filterOption">
+                  <input type="radio" name="priceSort" value="default" checked onchange="applyFilter()" />
+                  <span>Default</span>
+                </label>
+                <label class="filterOption">
+                  <input type="radio" name="priceSort" value="asc" onchange="applyFilter()" />
+                  <span><i class="fa-solid fa-arrow-up-short-wide"></i> Low to High</span>
+                </label>
+                <label class="filterOption">
+                  <input type="radio" name="priceSort" value="desc" onchange="applyFilter()" />
+                  <span><i class="fa-solid fa-arrow-down-wide-short"></i> High to Low</span>
+                </label>
+              </div>
+
+              <button class="clearFilterBtn" onclick="clearFilter()">
+                <i class="fa-solid fa-rotate-left"></i> Clear Filter
+              </button>
+            </div>
+          </aside>
+
+          <div class="catDetailMain">
+            <div class="catDetailHeader">
+              <div>
+                <h2 id="catTitle">Loading...</h2>
+                <p id="catDesc" class="catDesc"></p>
+              </div>
+              <span id="productCount" class="productCount"></span>
+            </div>
+
+            <div class="productGrid" id="productGrid">
+              <!-- Products injected by JS -->
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <div id="footer"></div>
+
+    <button
+      id="scrollTopBtn"
+      onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+    >&#8679;</button>
+
+    <script src="/Website/JS/auth.js"></script>
+    <script src="/Website/JS/cart.js"></script>
+
+    <script>
+      fetch('Components/Header.html')
+        .then(r => r.text())
+        .then(d => {
+          document.getElementById('header').innerHTML = d;
+          if (typeof updateHeaderUI === 'function') updateHeaderUI();
+          if (typeof updateCartCount === 'function') updateCartCount();
+        });
+
+      fetch('Components/Footer.html')
+        .then(r => r.text())
+        .then(d => { document.getElementById('footer').innerHTML = d; });
+
+      const categoryData = {
+        fashion: {
+          label: 'Fashion',
+          icon: 'fa-shirt',
+          color: '#6d4aae',
+          desc: 'Trendy clothes for every occasion',
+          products: [
+            { name: 'Black Solid Casual Shirt',     img: '/Website/Images/fetch.webp',                                                                         price: 799,  oldPrice: 999,  discount: '20%', inStock: true,  stars: 4 },
+            { name: 'Glito Black Solid Dry-Fit Regular', img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749125708/kg9y4puytbq8gqym1ik3.webp',     price: 1199, oldPrice: null, discount: '',    inStock: false, stars: 3 },
+            { name: 'Altecia Tie and Dye Jogger',   img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287177/apjro8eqcyocotcrixvc.jpg',           price: 2099, oldPrice: 2999, discount: '30%', inStock: true,  stars: 5 },
+            { name: 'Chikankari Woven Kurta',        img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057218/roexq0lwfrwins3zdyjw.jpg',           price: 2499, oldPrice: null, discount: '',    inStock: true,  stars: 4 },
+          ]
+        },
+        electronics: {
+          label: 'Electronics',
+          icon: 'fa-mobile-screen-button',
+          color: '#e67e22',
+          desc: 'Latest gadgets at the best prices',
+          products: [
+            { name: 'Smart Watch Pro',              img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749286992/y2soe1z7ftucyiujelji.webp',          price: 2499, oldPrice: 2999, discount: '15%', inStock: true,  stars: 4 },
+            { name: 'Smart Watch Series X',         img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059235/camdnbilkfktlssr5fw3.jpg',           price: 2499, oldPrice: null, discount: '',    inStock: true,  stars: 4 },
+            { name: 'Smart Watch Lite Edition',     img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059344/hvpx8w2rjnaeggxlyslh.webp',         price: 1799, oldPrice: 1999, discount: '10%', inStock: true,  stars: 5 },
+            { name: "Men's Casual Smart Band",      img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg',           price: 899,  oldPrice: null, discount: '',    inStock: false, stars: 3 },
+          ]
+        },
+        bags: {
+          label: 'Bags',
+          icon: 'fa-bag-shopping',
+          color: '#27ae60',
+          desc: 'Stylish bags for every style',
+          products: [
+            { name: 'Siril Poly Silk White & Beige Bag', img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057218/roexq0lwfrwins3zdyjw.jpg',     price: 799,  oldPrice: 999,  discount: '20%', inStock: true,  stars: 4 },
+            { name: 'Cotton Co Ord Tote Bag',        img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749317081/eahbxise3zcbcbns1cer.jpg',          price: 1199, oldPrice: null, discount: '',    inStock: false, stars: 3 },
+            { name: 'Siril Poly Silk Shoulder Bag',  img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749316478/orfh1xk8fmny1e4xa1lq.webp',        price: 2099, oldPrice: 2999, discount: '30%', inStock: true,  stars: 5 },
+            { name: "Men's Casual Sling Bag",        img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749058993/nwbwmkdv4cwaglumkpeo.webp',        price: 799,  oldPrice: 999,  discount: '20%', inStock: true,  stars: 4 },
+          ]
+        },
+        footwear: {
+          label: 'Footwear',
+          icon: 'fa-shoe-prints',
+          color: '#e74c3c',
+          desc: 'Step out in style',
+          products: [
+            { name: 'Sports Shoes Running Edition', img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060315/grryzpqua6batygfuhdp.webp',          price: 2099, oldPrice: 2999, discount: '30%', inStock: true,  stars: 5 },
+            { name: 'Sports Shoes Flex Series',     img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057036/clbdkulkvg8d5umyqtcy.jpg',           price: 2099, oldPrice: 2999, discount: '30%', inStock: true,  stars: 5 },
+            { name: 'Women Summer Sandals',          img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060456/zq6ijswkrrpkrnzimnvp.webp',         price: 1199, oldPrice: null, discount: '20%', inStock: false, stars: 3 },
+            { name: "Men's Casual Loafers",          img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749058993/nwbwmkdv4cwaglumkpeo.webp',        price: 799,  oldPrice: 999,  discount: '',    inStock: true,  stars: 4 },
+          ]
+        },
+        groceries: {
+          label: 'Groceries',
+          icon: 'fa-basket-shopping',
+          color: '#2ecc71',
+          desc: 'Fresh essentials delivered to your door',
+          products: [
+            { name: 'Organic Rolled Oats 1kg',      img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749125708/kg9y4puytbq8gqym1ik3.webp',         price: 269,  oldPrice: 299,  discount: '10%', inStock: true,  stars: 4 },
+            { name: 'Premium Basmati Rice 5kg',      img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749287177/apjro8eqcyocotcrixvc.jpg',          price: 599,  oldPrice: null, discount: '',    inStock: true,  stars: 5 },
+            { name: 'Kachi Ghani Mustard Oil 1L',   img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057218/roexq0lwfrwins3zdyjw.jpg',           price: 160,  oldPrice: 189,  discount: '15%', inStock: true,  stars: 3 },
+            { name: 'Mixed Dal Combo Pack 2kg',      img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749226128/cnjssprllarcvfbl0jjc.jpg',          price: 349,  oldPrice: null, discount: '',    inStock: false, stars: 4 },
+          ]
+        },
+        beauty: {
+          label: 'Beauty',
+          icon: 'fa-spa',
+          color: '#e91e8c',
+          desc: 'Skincare & makeup for your glow',
+          products: [
+            { name: 'Vitamin C Brightening Serum',  img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749286992/y2soe1z7ftucyiujelji.webp',         price: 599,  oldPrice: 799,  discount: '25%', inStock: true,  stars: 5 },
+            { name: 'Glossy Lip Tint – Rose Shade', img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059235/camdnbilkfktlssr5fw3.jpg',           price: 249,  oldPrice: null, discount: '',    inStock: true,  stars: 4 },
+            { name: 'Daily Glow SPF Moisturizer',   img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749317081/eahbxise3zcbcbns1cer.jpg',           price: 399,  oldPrice: 499,  discount: '20%', inStock: true,  stars: 5 },
+            { name: 'Intense Black Waterproof Kajal',img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749316478/orfh1xk8fmny1e4xa1lq.webp',        price: 179,  oldPrice: null, discount: '',    inStock: false, stars: 3 },
+          ]
+        },
+        wellness: {
+          label: 'Wellness',
+          icon: 'fa-heart-pulse',
+          color: '#3498db',
+          desc: 'Health products for a better you',
+          products: [
+            { name: 'Daily Multivitamin Tablets 60ct', img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060315/grryzpqua6batygfuhdp.webp',      price: 499,  oldPrice: 549,  discount: '10%', inStock: true,  stars: 4 },
+            { name: 'Whey Protein Chocolate 1kg',    img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749057036/clbdkulkvg8d5umyqtcy.jpg',          price: 1299, oldPrice: null, discount: '',    inStock: true,  stars: 5 },
+            { name: 'Non-Slip Premium Yoga Mat',     img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749060456/zq6ijswkrrpkrnzimnvp.webp',         price: 739,  oldPrice: 899,  discount: '18%', inStock: true,  stars: 4 },
+            { name: 'Ashwagandha Root Extract 500mg',img: 'https://res.cloudinary.com/dksz8hsb4/image/upload/v1749059344/hvpx8w2rjnaeggxlyslh.webp',        price: 399,  oldPrice: null, discount: '',    inStock: false, stars: 4 },
+          ]
+        }
+      };
+
+      const params     = new URLSearchParams(window.location.search);
+      const catKey     = params.get('cat') || 'fashion';
+      const catInfo    = categoryData[catKey];
+
+      let currentProducts = catInfo ? [...catInfo.products] : [];
+
+      function init() {
+        if (!catInfo) {
+          document.getElementById('catTitle').textContent = 'Category Not Found';
+          return;
+        }
+        document.title = catInfo.label + ' – ShopEase';
+        document.getElementById('catTitle').textContent = catInfo.label;
+        document.getElementById('catDesc').textContent  = catInfo.desc;
+        
+        document.getElementById('catTitle').style.color = catInfo.color;
+        renderProducts(currentProducts);
+      }
+
+      function renderProducts(list) {
+        const grid = document.getElementById('productGrid');
+        document.getElementById('productCount').textContent = list.length + ' Products';
+
+        if (list.length === 0) {
+          grid.innerHTML = '<p class="noProducts">No products found.</p>';
+          return;
+        }
+
+        grid.innerHTML = list.map(p => {
+          const stars = '★'.repeat(p.stars) + '☆'.repeat(5 - p.stars);
+          return `
+            <div class="productItem" onclick="goToDetail(this)"
+              data-price="${p.price}"
+              data-name="${p.name}"
+              data-img="${p.img}"
+              data-oldprice="${p.oldPrice || ''}"
+              data-discount="${p.discount}"
+              data-stock="${p.inStock}">
+              ${p.discount ? `<span class="badge">${p.discount}</span>` : ''}
+              <div class="imgWrapper">
+                <img src="${p.img}" alt="${p.name}" />
+              </div>
+              <div class="info">
+                <h4>${p.name}</h4>
+                <span class="${p.inStock ? 'text-success' : 'text-danger'}">
+                  ${p.inStock ? 'In Stock' : 'Out of Stock'}
+                </span>
+                <div class="star-rating">${stars}</div>
+                <div class="price-row">
+                  ${p.oldPrice ? `<span class="oldPrice">₹${p.oldPrice}</span>` : ''}
+                  <span class="netPrice">₹${p.price}</span>
+                </div>
+              </div>
+            </div>`;
+        }).join('');
+      }
+
+      function applyFilter() {
+        const sort = document.querySelector('input[name="priceSort"]:checked').value;
+        let list = [...currentProducts];
+        if (sort === 'asc')  list.sort((a, b) => a.price - b.price);
+        if (sort === 'desc') list.sort((a, b) => b.price - a.price);
+        renderProducts(list);
+      }
+
+      function clearFilter() {
+        document.querySelector('input[name="priceSort"][value="default"]').checked = true;
+        renderProducts(currentProducts);
+      }
+
+      function goToDetail(item) {
+        const name    = item.querySelector('.info h4')?.innerText || '';
+        const img     = item.querySelector('.imgWrapper img')?.src || '';
+        const netP    = item.querySelector('.netPrice')?.innerText || '';
+        const oldP    = item.querySelector('.oldPrice')?.innerText || '';
+        const badge   = item.querySelector('.badge')?.innerText || '';
+        const inStock = item.querySelector('.text-success') ? 'true' : 'false';
+        const stars   = (item.querySelector('.star-rating')?.innerText.match(/★/g) || []).length;
+
+        const p = new URLSearchParams({ name, img, price: netP, old: oldP, disc: badge, stock: inStock, stars });
+        window.location.href = 'ProductDetail.html?' + p.toString();
+      }
+
+      init();
+    </script>
+  </body>
+</html>
