@@ -67,6 +67,75 @@
   cursor: pointer;
 }
 
+.categorySection.groceries .section-header h3 {
+  color: #2ecc71;
+}
+.categorySection.beauty .section-header h3 {
+  color: #e91e8c;
+}
+.categorySection.wellness .section-header h3 {
+  color: #3498db;
+}
+
+/* Hidden categories */
+.hidden-category {
+  display: none;
+}
+
+/* Reveal animation */
+.reveal-category {
+  display: block;
+  animation: fadeSlideIn 0.4s ease;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Load More Button */
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 24px 0 32px;
+  background: #f5f5f5;
+}
+
+.loadMoreBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 32px;
+  background: #fff;
+  border: 2px solid #6d4aae;
+  color: #6d4aae;
+  border-radius: 30px;
+  font-size: 14px;
+  font-weight: 700;
+  font-family: 'Lato', sans-serif;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.loadMoreBtn:hover {
+  background: #6d4aae;
+  color: #fff;
+}
+
+.loadMoreBtn i {
+  transition: transform 0.2s;
+}
+
+.loadMoreBtn:hover i {
+  transform: translateY(2px);
+}
+
 #scrollTopBtn {
   position: fixed;
   bottom: 30px;

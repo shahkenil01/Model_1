@@ -1,25 +1,19 @@
-// ============================================================
-//  cart.js  —  Cart logic using localStorage
-//  cart stored as array of: { name, price, img, qty }
-// ============================================================
 
-// ----- Get cart from localStorage -----
 function getCart() {
   var raw = localStorage.getItem('cart');
   return raw ? JSON.parse(raw) : [];
 }
 
-// ----- Save cart to localStorage -----
+
 function saveCart(cart) {
   localStorage.setItem('cart', JSON.stringify(cart));
 }
 
-// ----- Add product to cart -----
-// Call this from "Add to Cart" button: addToCart(name, price, imgSrc)
+
 function addToCart(name, price, imgSrc) {
   var cart = getCart();
 
-  // Check if item already exists
+
   var found = false;
   for (var i = 0; i < cart.length; i++) {
     if (cart[i].name === name) {
@@ -30,7 +24,7 @@ function addToCart(name, price, imgSrc) {
   }
 
   if (!found) {
-    // Clean price: remove ₹ and commas, keep number
+   
     var cleanPrice = String(price).replace(/[₹,]/g, '').trim();
     cart.push({ name: name, price: parseFloat(cleanPrice) || 0, img: imgSrc, qty: 1 });
   }
@@ -40,7 +34,7 @@ function addToCart(name, price, imgSrc) {
   showCartToast(name);
 }
 
-// ----- Update cart count badge in header -----
+
 function updateCartCount() {
   var cart  = getCart();
   var total = 0;
@@ -48,16 +42,16 @@ function updateCartCount() {
     total += cart[i].qty;
   }
 
-  // Try to find the count badge (loaded via fetch header)
+ 
   var countEl = document.querySelector('.count');
   if (countEl) {
     countEl.textContent = total;
   }
 }
 
-// ----- Show a small toast notification -----
+
 function showCartToast(productName) {
-  // Remove existing toast if any
+
   var old = document.getElementById('cartToast');
   if (old) old.remove();
 

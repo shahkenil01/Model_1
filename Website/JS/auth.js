@@ -1,7 +1,4 @@
-// ============================================================
-//  auth.js  —  User auth logic (signup / signin / logout)
-//  Uses localStorage to store user data
-// ============================================================
+
 
 // ----- SIGNUP -----
 function handleSignUp(event) {
@@ -105,12 +102,12 @@ function updateHeaderUI() {
     }
   }
 
-  // ---- Sidebar (All Menu) ----
+
   var sidebar = document.querySelector('.sidebarNav ul');
   if (!sidebar) return;
 
   if (isLoggedIn) {
-    // Remove Login & Sign Up li items
+
     sidebar.querySelectorAll('li').forEach(function (li) {
       var text = li.textContent.trim().toLowerCase();
       if (text === 'login' || text === 'sign up') {

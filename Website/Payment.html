@@ -98,7 +98,6 @@
 
     <div id="footer"></div>
 
-    <!-- Success Modal -->
     <div class="modal fade" id="successModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
       <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content text-center p-4">
@@ -119,7 +118,6 @@
     <script>
       var selectedPaymentMethod = null;
 
-      // ---- Load order summary from localStorage cart ----
       function loadOrderSummary() {
         var cart = getCart();
         var summaryDiv = document.getElementById('orderSummaryItems');
@@ -152,11 +150,9 @@
         document.getElementById('payDelivery').textContent = '₹' + delivery;
         document.getElementById('payTotal').textContent    = '₹' + total;
 
-        // store final total for modal
         window._finalTotal = total;
       }
 
-      // ---- Payment method selector ----
       function selectPayment(method, event) {
         selectedPaymentMethod = method;
         document.querySelectorAll('input[name="payment"]').forEach(function(r){ r.checked = false; });
@@ -181,14 +177,12 @@
         document.getElementById('modalAmount').textContent = '₹' + window._finalTotal;
         document.getElementById('modalMethod').textContent = methods[selectedPaymentMethod];
 
-        // ---- Save order to localStorage order history ----
         saveOrderToHistory(methods[selectedPaymentMethod]);
 
         var modal = new bootstrap.Modal(document.getElementById('successModal'));
         modal.show();
       }
 
-      // ---- Save completed order to history ----
       function saveOrderToHistory(methodLabel) {
         var cart  = getCart();
         var now   = new Date();
