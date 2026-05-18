@@ -115,7 +115,6 @@ function updateHeaderUI() {
       }
     });
 
-    // Add My Profile if not already there
     if (!sidebar.querySelector('a[href*="MyProfile"]')) {
       var profileLi = document.createElement('li');
       profileLi.innerHTML = '<a href="/Website/MyProfile.html"><i class="fa-solid fa-user"></i> My Profile (' + userName + ')</a>';
