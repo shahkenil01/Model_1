@@ -145,6 +145,29 @@
           }
         }, { passive: true });
       })();
+
+      // Sticky nav: fix only the navbar after scrolling past the top header
+      (function () {
+        var nav    = document.querySelector('.navigation');
+        var header = document.querySelector('.header');
+
+        function onScroll() {
+          var headerBottom = header ? header.getBoundingClientRect().bottom : 70;
+          if (window.scrollY > headerBottom) {
+            if (!nav.classList.contains('nav-sticky')) {
+              nav.classList.add('nav-sticky');
+              document.body.style.paddingTop = nav.offsetHeight + 'px';
+            }
+          } else {
+            if (nav.classList.contains('nav-sticky')) {
+              nav.classList.remove('nav-sticky');
+              document.body.style.paddingTop = '';
+            }
+          }
+        }
+
+        window.addEventListener('scroll', onScroll, { passive: true });
+      })();
     </script>
   </body>
 </html>

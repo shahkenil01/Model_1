@@ -437,8 +437,8 @@
           if (typeof updateCartCount === 'function') {
             updateCartCount();
           }
+          initStickyNav();
 
-          // Scroll pe .fixed class toggle
           var wrapper = document.querySelector('.headerWrapperFixed');
           window.addEventListener(
             'scroll',
@@ -490,5 +490,7 @@
         });
       });
     </script>
+
+    <script src="JS/stickyNav.js"></script>
   </body>
 </html>

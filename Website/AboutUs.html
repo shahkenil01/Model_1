@@ -139,8 +139,26 @@
         .then((res) => res.text())
         .then((data) => {
           document.getElementById('header').innerHTML = data;
-          if(typeof updateHeaderUI==="function"){updateHeaderUI();}
-          if(typeof updateCartCount==="function"){updateCartCount();}
+          if (typeof updateHeaderUI === 'function') {
+            updateHeaderUI();
+          }
+          if (typeof updateCartCount === 'function') {
+            updateCartCount();
+          }
+          initStickyNav();
+
+          var wrapper = document.querySelector('.headerWrapperFixed');
+          window.addEventListener(
+            'scroll',
+            function () {
+              if (window.scrollY > 10) {
+                wrapper.classList.add('fixed');
+              } else {
+                wrapper.classList.remove('fixed');
+              }
+            },
+            { passive: true },
+          );
         });
 
       fetch('Components/Footer.html')
@@ -149,5 +167,6 @@
           document.getElementById('footer').innerHTML = data;
         });
     </script>
+    <script src="JS/stickyNav.js"></script>
   </body>
 </html>
