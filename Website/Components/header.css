@@ -30,17 +30,24 @@ ul {
 
 .headerWrapperFixed {
   background: #fff;
-  position: sticky;
-  top: 0;
-  width: 100%;
-  z-index: 100;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
 }
 
 .headerWrapper {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
+.headerWrapperFixed.fixed nav.navigation {
+  top: 0;
+}
+
+nav.navigation {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  background: #fff;
+  top: 70px;
+  transition: top 0.3s ease-in-out;
+}
 .container {
   max-width: 1280px;
   margin: 0 auto;

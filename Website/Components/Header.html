@@ -95,7 +95,6 @@
     <script src="/Website/JS/auth.js"></script>
     <script src="/Website/JS/cart.js"></script>
     <script>
-      // Update header based on login status
       function updateHeaderUI() {
         var isLoggedIn = localStorage.getItem('loggedIn') === 'true';
         var userName   = localStorage.getItem('loggedInName') || '';
@@ -135,6 +134,17 @@
 
       updateHeaderUI();
       updateCartCount();
+
+      (function () {
+        var wrapper = document.querySelector('.headerWrapperFixed');
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 10) {
+            wrapper.classList.add('fixed');
+          } else {
+            wrapper.classList.remove('fixed');
+          }
+        }, { passive: true });
+      })();
     </script>
   </body>
 </html>
