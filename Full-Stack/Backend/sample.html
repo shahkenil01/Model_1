@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Node JS Website</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background: #f4f4f4;
+        }
+
+        header{
+            background: #222;
+            color: white;
+            padding: 15px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo{
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        nav ul{
+            display: flex;
+            list-style: none;
+            gap: 20px;
+        }
+
+        nav ul li a{
+            color: white;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        nav ul li a:hover{
+            color: orange;
+        }
+
+        .hero{
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .hero h1{
+            font-size: 45px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .hero p{
+            font-size: 20px;
+            color: #666;
+            max-width: 700px;
+            margin: auto;
+            line-height: 1.6;
+        }
+
+        .btn{
+            display: inline-block;
+            margin-top: 25px;
+            padding: 12px 25px;
+            background: orange;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 18px;
+        }
+
+        .btn:hover{
+            background: darkorange;
+        }
+
+        footer{
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-top: 80px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">My Website</div>
+
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Welcome To Node JS Server</h1>
+
+        <p>
+            This HTML page is served using Node JS and HTTP module.
+            You can create dynamic websites and APIs using Node JS easily.
+        </p>
+
+        <a href="#" class="btn">Learn More</a>
+    </section>
+
+    <footer>
+        <p>© 2026 My Website | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
