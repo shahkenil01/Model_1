@@ -1,0 +1,30 @@
+[
+  {
+    "_id": "684308bad1b0e72e8c00580c",
+    "indexNumber": 62,
+    "name": "NEW GOLDEN LONG JHUMKI EARRING",
+    "description": "Lorem Ipsum is simply dummy text of the printing and typesetting industry.",
+    "images": [
+      "https://res.cloudinary.com/dksz8hsb4/image/upload/v1749223609/yd5uhnydmr2fwlwwpcpk.jpg"
+    ],
+    "brand": "JSV CAHIRA",
+    "price": "350",
+    "oldPrice": "430",
+    "category": {
+      "_id": "682487067119e6080efdef8c",
+      "name": "Jewellery",
+      "images": [
+        "https://res.cloudinary.com/dksz8hsb4/image/upload/v1747224325/odbwlanbb0pwds3ntigq.png"
+      ],
+      "color": "#deffd9"
+    },
+    "countInStock": 100,
+    "rating": 4,
+    "numReviews": 0,
+    "isFeatured": false,
+    "productRAMS": [],
+    "productSIZE": [],
+    "productWEIGHT": [],
+    "dateCreated": "2025-06-06T15:26:50.129Z"
+  }
+]
