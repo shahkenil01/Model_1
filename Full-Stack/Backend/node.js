@@ -1,25 +1,14 @@
-let http = require('http');
-let fs = require('fs');
+const express = require('express');
+const path = require('path');
 
-http.createServer((request, response) => {
+const app = express();
 
-    response.writeHead(200, {
-        'Content-Type': 'text/html'
-    });
+app.use(express.static(path.join(__dirname, 'Public')));
 
-    fs.readFile('./sample.html', (error, data) => {
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Public', 'index.html'));
+});
 
-        if (error) {
-            response.writeHead(404);
-            response.write('File not found');
-        }
-        else {
-            response.write(data);
-        }
-
-        response.end();
-    });
-
-}).listen(3000);
-
-console.log("Server running on port 3000");
+app.listen(8081, () => {
+    console.log('Server running on http://localhost:8081');
+});

@@ -1,4 +1,4 @@
-var http = require('http');
+/*var http = require('http');
 var fs = require('fs');
 
 http.createServer((req, res) => {
@@ -39,4 +39,22 @@ http.createServer((req, res) => {
 
 }).listen(8081);
 
-console.log("Server running on port 8081");
+console.log("Server running on port 8081");*/
+
+const express = require('express');
+const app = express();
+
+app.get('/', (req, res) => {
+    res.send('Welcome to Home page');
+});
+
+app.get('/pr2', (req, res) => {
+    res.sendFile(__dirname + '/pr2.html');
+});
+
+app.use((req, res) => {
+    res.status(404).send('Page not found');
+});
+
+app.listen(8081);
+
