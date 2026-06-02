@@ -1,0 +1,51 @@
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+
+const app = express();
+
+app.use(express.json());
+app.use(cors());
+
+mongoose.connect(
+  "mongodb+srv://shahkenil430:Kenil%400305@cluster0.at7eoyz.mongodb.net/Shopping?retryWrites=true&w=majority&appName=Cluster0"
+)
+.then(() => console.log("MongoDB Connected"))
+.catch((err) => console.log(err));
+
+const userSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  password: String
+});
+
+const User = mongoose.model("User", userSchema);
+
+app.post("/api/users", async (req, res) => {
+  try {
+    const { name, email, password } = req.body;
+
+    const user = new User({
+      name,
+      email,
+      password
+    });
+
+    await user.save();
+
+    res.status(201).json({
+      success: true,
+      message: "User Registered Successfully"
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
+app.listen(8081, () => {
+  console.log("Server running on http://localhost:8081");
+});

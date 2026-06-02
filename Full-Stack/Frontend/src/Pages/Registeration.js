@@ -1,4 +1,6 @@
+
 import React, { useState } from "react";
+import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Register() {
@@ -17,8 +19,15 @@ function Register() {
       setError("All fields are required");
     } else {
       setError("");
-      alert("Registration Successful");
-      navigate("/home");
+      axios
+        .post("http://localhost:8081/api/users", { name, email, password })
+        .then((response) => {
+          alert("Registration Successful");
+          navigate("/");
+        })
+        .catch((error) => {
+          setError("Registration Failed");
+        });
     }
   };
 
