@@ -1,11 +1,10 @@
-import { Link } from "react-router-dom";
-import "../App.css";
+import { Link } from 'react-router-dom';
+import '../App.css';
 
 const Header = () => {
   return (
     <nav>
       <ul className="navigation">
-
         <li>
           <Link to="/">Home</Link>
         </li>
@@ -16,10 +15,20 @@ const Header = () => {
         <li>
           <Link to="/ProductTable">Product Table</Link>
         </li>
+        <li>
+          <a href="/Website/AboutUs.html">About Us</a>
+        </li>
 
+        <li>
+          <a href="/Website/Category.html">Category</a>
+        </li>
+
+        <li>
+          <a href="/Website/ContactUs.html">Contact Us</a>
+        </li>
       </ul>
     </nav>
   );
-}
+};
 
 export default Header;
