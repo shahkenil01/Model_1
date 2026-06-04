@@ -22,7 +22,7 @@ function Register() {
       axios.post( `${process.env.REACT_APP_API_URL}/api/users`, { name, email, password } )
         .then((response) => {
           alert("Registration Successful");
-          navigate("/");
+          navigate("/Website/index.html");
         })
         .catch((error) => {
           setError("Registration Failed");
