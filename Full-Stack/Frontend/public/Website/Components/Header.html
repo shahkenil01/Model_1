@@ -5,8 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Header</title>
     <link rel="stylesheet" href="/Website/Components/header.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
     <div class="headerWrapperFixed">
@@ -32,7 +38,13 @@
                 </div>
               </div>
               <div class="part3">
-                <button class="btn-blue" id="authBtn" onclick="headerAuthClick()">Sign In</button>
+                <button
+                  class="btn-blue"
+                  id="authBtn"
+                  onclick="headerAuthClick()"
+                >
+                  Sign In
+                </button>
                 <div class="cartTab">
                   <div class="cart-icon-wrap">
                     <a href="/Website/Cart.html" class="cart">
@@ -59,31 +71,93 @@
                 </label>
                 <div class="sidebarNav">
                   <ul id="sidebarMenuList">
-                    <li id="menuLogin"><a href="/Website/SignIn.html">Login</a></li>
-                    <li id="menuSignup"><a href="/Website/SignUp.html">Sign Up</a></li>
-                    <li id="menuProfile" style="display:none"><a href="/Website/MyProfile.html"><i class="fa-solid fa-user"></i> My Profile</a></li>
-                    <li id="menuOrders" style="display:none"><a href="/Website/OrderHistory.html"><i class="fa-solid fa-clock-rotate-left"></i> Order History</a></li>
+                    <li id="menuLogin">
+                      <a href="/Website/SignIn.html">Login</a>
+                    </li>
+                    <li id="menuSignup">
+                      <a href="/Website/SignUp.html">Sign Up</a>
+                    </li>
+                    <li id="menuProfile" style="display: none">
+                      <a href="/Website/MyProfile.html"
+                        ><i class="fa-solid fa-user"></i> My Profile</a
+                      >
+                    </li>
+                    <li id="menuOrders" style="display: none">
+                      <a href="/Website/OrderHistory.html"
+                        ><i class="fa-solid fa-clock-rotate-left"></i> Order
+                        History</a
+                      >
+                    </li>
+                    <li id="menuAdminUsers" style="display: none">
+                      <a href="/Website/AdminUsers.html" style="color: #6d4aae">
+                        <i class="fa-solid fa-users-gear"></i> Registered Users
+                      </a>
+                    </li>
                     <li><a href="/Website/index.html">Home</a></li>
                     <li><a href="/Website/Cart.html">Cart</a></li>
-                    <li><a href="/Website/ProductDetail.html">Product Details</a></li>
+                    <li>
+                      <a href="/Website/ProductDetail.html">Product Details</a>
+                    </li>
                     <li><a href="/Website/Category.html">Categories</a></li>
                     <li><a href="/Website/Payment.html">Payment</a></li>
                     <li><a href="/Website/AboutUs.html">About Us</a></li>
                     <li><a href="/Website/ContactUs.html">Contact Us</a></li>
-                    <li id="menuLogout" style="display:none"><a href="#" onclick="logout()" style="color:#ea2b0f;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                    <li id="menuLogout" style="display: none">
+                      <a href="#" onclick="logout()" style="color: #ea2b0f"
+                        ><i class="fa-solid fa-right-from-bracket"></i>
+                        Logout</a
+                      >
+                    </li>
                   </ul>
                 </div>
               </div>
 
               <div class="navPart2">
                 <ul>
-                  <li style="color:#ff8009;"><a href="/Website/Category.html#fashion"><i class="fa-solid fa-shirt"></i> fashion</a><div class="submenu"><a href="#">Men</a><a href="#">Women</a><a href="#">Kids</a></div></li>
-                  <li style="color:#e67e22;"><a href="/Website/Category.html#electronics"><i class="fa-solid fa-mobile-screen-button"></i> electronics</a><div class="submenu"><a href="#">Mobiles</a><a href="#">Laptops</a><a href="#">Accessories</a></div></li>
-                  <li style="color:#27ae60;"><a href="/Website/Category.html#bags"><i class="fa-solid fa-bag-shopping"></i> bags</a></li>
-                  <li style="color:#e74c3c;"><a href="/Website/Category.html#footwear"><i class="fa-solid fa-shoe-prints"></i> footwear</a></li>
-                  <li style="color:#ff00f2;"><a href="/Website/Category.html#groceries"><i class="fa-solid fa-cart-shopping"></i> groceries</a></li>
-                  <li style="color:#51ff00;"><a href="/Website/Category.html#beauty"><i class="fa-solid fa-pump-soap"></i> beauty</a></li>
-                  <li style="color:#00ffbf;"><a href="/Website/Category.html#wellness"><i class="fa-solid fa-heart-pulse"></i> wellness</a></li>
+                  <li style="color: #ff8009">
+                    <a href="/Website/Category.html#fashion"
+                      ><i class="fa-solid fa-shirt"></i> fashion</a
+                    >
+                    <div class="submenu">
+                      <a href="#">Men</a><a href="#">Women</a
+                      ><a href="#">Kids</a>
+                    </div>
+                  </li>
+                  <li style="color: #e67e22">
+                    <a href="/Website/Category.html#electronics"
+                      ><i class="fa-solid fa-mobile-screen-button"></i>
+                      electronics</a
+                    >
+                    <div class="submenu">
+                      <a href="#">Mobiles</a><a href="#">Laptops</a
+                      ><a href="#">Accessories</a>
+                    </div>
+                  </li>
+                  <li style="color: #27ae60">
+                    <a href="/Website/Category.html#bags"
+                      ><i class="fa-solid fa-bag-shopping"></i> bags</a
+                    >
+                  </li>
+                  <li style="color: #e74c3c">
+                    <a href="/Website/Category.html#footwear"
+                      ><i class="fa-solid fa-shoe-prints"></i> footwear</a
+                    >
+                  </li>
+                  <li style="color: #ff00f2">
+                    <a href="/Website/Category.html#groceries"
+                      ><i class="fa-solid fa-cart-shopping"></i> groceries</a
+                    >
+                  </li>
+                  <li style="color: #51ff00">
+                    <a href="/Website/Category.html#beauty"
+                      ><i class="fa-solid fa-pump-soap"></i> beauty</a
+                    >
+                  </li>
+                  <li style="color: #00ffbf">
+                    <a href="/Website/Category.html#wellness"
+                      ><i class="fa-solid fa-heart-pulse"></i> wellness</a
+                    >
+                  </li>
                 </ul>
               </div>
             </div>
@@ -91,83 +165,5 @@
         </nav>
       </div>
     </div>
-
-    <script src="/Website/JS/auth.js"></script>
-    <script src="/Website/JS/cart.js"></script>
-    <script>
-      function updateHeaderUI() {
-        var isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-        var userName   = localStorage.getItem('loggedInName') || '';
-
-        var authBtn      = document.getElementById('authBtn');
-        var menuLogin    = document.getElementById('menuLogin');
-        var menuSignup   = document.getElementById('menuSignup');
-        var menuProfile  = document.getElementById('menuProfile');
-        var menuOrders   = document.getElementById('menuOrders');
-        var menuLogout   = document.getElementById('menuLogout');
-
-        if (isLoggedIn) {
-          if (authBtn) { authBtn.textContent = '👤 ' + userName; }
-          if (menuLogin)   menuLogin.style.display   = 'none';
-          if (menuSignup)  menuSignup.style.display  = 'none';
-          if (menuProfile) menuProfile.style.display = '';
-          if (menuOrders)  menuOrders.style.display  = '';
-          if (menuLogout)  menuLogout.style.display  = '';
-        } else {
-          if (authBtn) { authBtn.textContent = 'Sign In'; }
-          if (menuLogin)   menuLogin.style.display   = '';
-          if (menuSignup)  menuSignup.style.display  = '';
-          if (menuProfile) menuProfile.style.display = 'none';
-          if (menuOrders)  menuOrders.style.display  = 'none';
-          if (menuLogout)  menuLogout.style.display  = 'none';
-        }
-      }
-
-      function headerAuthClick() {
-        var isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-        if (isLoggedIn) {
-          window.location.href = '/Website/MyProfile.html';
-        } else {
-          window.location.href = '/Website/SignIn.html';
-        }
-      }
-
-      updateHeaderUI();
-      updateCartCount();
-
-      (function () {
-        var wrapper = document.querySelector('.headerWrapperFixed');
-        window.addEventListener('scroll', function () {
-          if (window.scrollY > 10) {
-            wrapper.classList.add('fixed');
-          } else {
-            wrapper.classList.remove('fixed');
-          }
-        }, { passive: true });
-      })();
-
-      // Sticky nav: fix only the navbar after scrolling past the top header
-      (function () {
-        var nav    = document.querySelector('.navigation');
-        var header = document.querySelector('.header');
-
-        function onScroll() {
-          var headerBottom = header ? header.getBoundingClientRect().bottom : 70;
-          if (window.scrollY > headerBottom) {
-            if (!nav.classList.contains('nav-sticky')) {
-              nav.classList.add('nav-sticky');
-              document.body.style.paddingTop = nav.offsetHeight + 'px';
-            }
-          } else {
-            if (nav.classList.contains('nav-sticky')) {
-              nav.classList.remove('nav-sticky');
-              document.body.style.paddingTop = '';
-            }
-          }
-        }
-
-        window.addEventListener('scroll', onScroll, { passive: true });
-      })();
-    </script>
   </body>
 </html>

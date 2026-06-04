@@ -431,26 +431,10 @@
         .then((res) => res.text())
         .then((data) => {
           document.getElementById('header').innerHTML = data;
-          if (typeof updateHeaderUI === 'function') {
-            updateHeaderUI();
-          }
-          if (typeof updateCartCount === 'function') {
-            updateCartCount();
-          }
-          initStickyNav();
+          updateHeaderUI();
+          updateCartCount();
 
-          var wrapper = document.querySelector('.headerWrapperFixed');
-          window.addEventListener(
-            'scroll',
-            function () {
-              if (window.scrollY > 10) {
-                wrapper.classList.add('fixed');
-              } else {
-                wrapper.classList.remove('fixed');
-              }
-            },
-            { passive: true },
-          );
+          initStickyNav();
         });
 
       fetch('Components/Footer.html')

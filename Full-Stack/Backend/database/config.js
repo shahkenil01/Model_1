@@ -1,68 +1,71 @@
-require("dotenv").config({ path: "../.env" });
+// Backend/database/config.js
+require('dotenv').config({ path: '../.env' });
 
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
+const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const User = require('./users'); 
 
 const app = express();
-
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URI)
-.then(() => console.log("MongoDB Connected"))
-.catch((err) => console.log(err));
+mongoose
+  .connect(process.env.MONGO_URI)
+  .then(() => console.log('MongoDB Connected'))
+  .catch((err) => console.log(err));
 
-const userSchema = new mongoose.Schema({
-  name: String,
-  email: String,
-  password: String
-});
-
-const User = mongoose.model("User", userSchema);
-
-app.post("/api/users", async (req, res) => {
+app.post('/api/users', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, phone, email, password } = req.body;
 
-    const user = new User({
-      name,
-      email,
-      password
-    });
+    const existing = await User.findOne({ email });
+    if (existing) {
+      return res
+        .status(409)
+        .json({ success: false, message: 'Email already registered' });
+    }
 
+    const user = new User({ name, phone, email, password });
     await user.save();
 
-    res.status(201).json({
-      success: true,
-      message: "User Registered Successfully"
-    });
-
+    res.status(201).json({ success: true, user });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-app.get("/api/users", async (req, res) => {
+app.get('/api/users', async (req, res) => {
   try {
     const users = await User.find();
-
-    res.status(200).json({
-      success: true,
-      users
-    });
-
+    res.status(200).json({ success: true, users });
   } catch (error) {
-    res.status(500).json({
-      success: false,
-      message: error.message
-    });
+    res.status(500).json({ success: false, message: error.message });
   }
 });
 
-app.listen(process.env.PORT, () => {
-  console.log(`Server running on http://localhost:${process.env.PORT}`);
+app.get('/api/users/all', async (req, res) => {
+  try {
+    const users = await User.find({}, 'name email phone isAdmin password');
+    res.json({ success: true, users });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+app.get('/api/users/email/:email', async (req, res) => {
+  try {
+    const user = await User.findOne({ email: req.params.email });
+    if (!user)
+      return res
+        .status(404)
+        .json({ success: false, message: 'User not found' });
+    res.json({ success: true, user });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
+
+app.listen(process.env.PORT || 8080, () => {
+  console.log(`Server running on http://localhost:${process.env.PORT || 8080}`);
 });

@@ -1,0 +1,649 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin — Registered Users</title>
+    <link rel="stylesheet" href="Components/header.css" />
+    <link rel="stylesheet" href="Components/Footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      :root {
+        --bg: #0a0a0f;
+        --surface: #111118;
+        --card: #161622;
+        --border: #2a2a3a;
+        --accent: #3b82f6;
+        --accent2: #8b5cf6;
+        --green: #10b981;
+        --text: #f0f0f5;
+        --muted: #6b7280;
+        --danger: #ef4444;
+      }
+      body {
+        font-family: 'DM Sans', sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        min-height: 100vh;
+      }
+
+      /* Banner */
+      .adminBanner {
+        background: linear-gradient(135deg, #0f0f1a 0%, #0a0a12 100%);
+        border-bottom: 1px solid var(--border);
+        padding: 32px 0 0;
+        position: relative;
+        overflow: hidden;
+      }
+      .bannerInner {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 24px 28px;
+        position: relative;
+        z-index: 1;
+      }
+      .bannerTop {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 16px;
+      }
+      .bannerLeft {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+      }
+      .shieldIcon {
+        width: 56px;
+        height: 56px;
+        border-radius: 14px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        flex-shrink: 0;
+      }
+      .bannerTitle {
+        font-family: 'Syne', sans-serif;
+        font-size: 26px;
+        font-weight: 800;
+      }
+      .bannerSub {
+        color: var(--muted);
+        font-size: 12px;
+        margin-top: 4px;
+      }
+      .backBtn {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--text);
+        padding: 8px 16px;
+        border-radius: 10px;
+        font-size: 13px;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .backBtn:hover {
+        border-color: var(--accent);
+        background: rgba(59, 130, 246, 0.1);
+      }
+
+      /* Stats */
+      .statsRow {
+        display: flex;
+        gap: 12px;
+        margin-top: 24px;
+        flex-wrap: wrap;
+      }
+      .statChip {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 18px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+      .statChip .chipIcon {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .statChip .chipVal {
+        font-family: 'Syne', sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+      }
+      .statChip .chipLbl {
+        font-size: 10px;
+        color: var(--muted);
+        text-transform: uppercase;
+      }
+
+      /* Main */
+      .mainWrap {
+        max-width: 1200px;
+        margin: 32px auto;
+        padding: 0 24px;
+      }
+      .toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 20px;
+      }
+      .searchBox {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 8px 14px;
+        width: 280px;
+      }
+      .searchBox input {
+        background: none;
+        border: none;
+        outline: none;
+        color: var(--text);
+        font-size: 13px;
+        width: 100%;
+      }
+      .searchBox input::placeholder {
+        color: var(--muted);
+      }
+      .filterBtns {
+        display: flex;
+        gap: 8px;
+      }
+      .filterBtn {
+        background: var(--card);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        padding: 8px 14px;
+        border-radius: 8px;
+        font-size: 12px;
+        cursor: pointer;
+        transition: all 0.2s;
+      }
+      .filterBtn.active,
+      .filterBtn:hover {
+        border-color: var(--accent);
+        color: var(--text);
+        background: rgba(59, 130, 246, 0.1);
+      }
+
+      /* Table */
+      .tableCard {
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+      }
+      .tableWrap {
+        overflow-x: auto;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      thead tr {
+        background: rgba(59, 130, 246, 0.08);
+        border-bottom: 1px solid var(--border);
+      }
+      thead th {
+        font-family: 'Syne', sans-serif;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 1px;
+        color: var(--muted);
+        padding: 14px 18px;
+        text-align: left;
+      }
+      tbody tr {
+        border-bottom: 1px solid rgba(42, 42, 58, 0.5);
+        transition: background 0.15s;
+      }
+      tbody tr:hover {
+        background: rgba(59, 130, 246, 0.05);
+      }
+      tbody td {
+        padding: 14px 18px;
+        font-size: 13px;
+        vertical-align: middle;
+      }
+      .tdNum {
+        font-family: 'Syne', sans-serif;
+        font-weight: 700;
+        color: var(--muted);
+        font-size: 11px;
+        width: 40px;
+      }
+      .userCell {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .avatar {
+        width: 34px;
+        height: 34px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Syne', sans-serif;
+        font-weight: 800;
+        font-size: 14px;
+        flex-shrink: 0;
+      }
+      .userName {
+        font-weight: 500;
+      }
+      .emailTd {
+        color: #9ca3af;
+        font-size: 12px;
+      }
+      .phoneTd {
+        color: var(--muted);
+        font-size: 12px;
+      }
+      .passDots {
+        letter-spacing: 3px;
+        color: var(--muted);
+        font-size: 14px;
+        cursor: pointer;
+      }
+      .passDots.revealed {
+        font-size: 12px;
+        letter-spacing: 0;
+        color: var(--text);
+        font-family: monospace;
+      }
+      .eyeBtn {
+        background: none;
+        border: none;
+        color: var(--muted);
+        cursor: pointer;
+        padding: 4px;
+        margin-left: 4px;
+        font-size: 11px;
+      }
+      .eyeBtn:hover {
+        color: var(--accent);
+      }
+      .roleBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-size: 10px;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+      .role-admin {
+        background: rgba(59, 130, 246, 0.2);
+        color: #60a5fa;
+        border: 1px solid rgba(59, 130, 246, 0.4);
+      }
+      .role-user {
+        background: rgba(16, 185, 129, 0.12);
+        color: var(--green);
+        border: 1px solid rgba(16, 185, 129, 0.3);
+      }
+
+      /* States */
+      .stateBox {
+        text-align: center;
+        padding: 60px 20px;
+      }
+      .stateBox .stateIcon {
+        font-size: 48px;
+        opacity: 0.2;
+        margin-bottom: 14px;
+      }
+      .spinner {
+        width: 32px;
+        height: 32px;
+        border: 3px solid var(--border);
+        border-top-color: var(--accent);
+        border-radius: 50%;
+        animation: spin 0.7s linear infinite;
+        margin: 0 auto 14px;
+      }
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      /* Pagination */
+      .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 18px;
+        border-top: 1px solid var(--border);
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pgInfo {
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .pgBtns {
+        display: flex;
+        gap: 5px;
+      }
+      .pgBtn {
+        background: var(--surface);
+        border: 1px solid var(--border);
+        color: var(--muted);
+        width: 30px;
+        height: 30px;
+        border-radius: 7px;
+        cursor: pointer;
+        font-size: 11px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.15s;
+      }
+      .pgBtn:hover,
+      .pgBtn.active {
+        border-color: var(--accent);
+        color: #60a5fa;
+        background: rgba(59, 130, 246, 0.1);
+      }
+      .pgBtn:disabled {
+        opacity: 0.35;
+        cursor: default;
+        pointer-events: none;
+      }
+
+      /* Toast */
+      .toast {
+        position: fixed;
+        bottom: 24px;
+        right: 24px;
+        background: var(--card);
+        border: 1px solid var(--border);
+        border-left: 3px solid var(--green);
+        color: var(--text);
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-size: 12px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+        transform: translateY(80px);
+        opacity: 0;
+        transition: all 0.3s;
+        z-index: 9999;
+        pointer-events: none;
+      }
+      .toast.show {
+        transform: translateY(0);
+        opacity: 1;
+      }
+
+      /* Access Denied */
+      .accessDenied {
+        min-height: 60vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .accessDenied .inner {
+        max-width: 360px;
+      }
+      .accessDenied .bigIcon {
+        font-size: 64px;
+        opacity: 0.15;
+        margin-bottom: 16px;
+      }
+      .accessDenied h2 {
+        font-family: 'Syne', sans-serif;
+        font-size: 22px;
+        font-weight: 800;
+        margin-bottom: 8px;
+      }
+      .accessDenied p {
+        color: var(--muted);
+        font-size: 13px;
+      }
+      .accessDenied a {
+        display: inline-block;
+        margin-top: 18px;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: white;
+        padding: 10px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        text-decoration: none;
+        font-size: 13px;
+      }
+
+      @media (max-width: 700px) {
+        .bannerTop {
+          flex-direction: column;
+        }
+        .toolbar {
+          flex-direction: column;
+          align-items: stretch;
+        }
+        .searchBox {
+          width: 100%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header"></div>
+    <div id="pageBody"></div>
+    <div id="footer"></div>
+    <div class="toast" id="toast"></div>
+
+    <script src="/Website/JS/auth.js"></script>
+    <script src="/Website/JS/cart.js"></script>
+    <script>
+      // Avatar colors - fresh palette
+      const COLORS = [
+        ['#3b82f6', '#1e3a8a'],
+        ['#8b5cf6', '#5b21b6'],
+        ['#10b981', '#064e3b'],
+        ['#f59e0b', '#78350f'],
+        ['#ef4444', '#7f1d1d'],
+        ['#ec4899', '#831843'],
+      ];
+      function avatarColor(name) {
+        let idx = (name.charCodeAt(0) || 0) % COLORS.length;
+        return COLORS[idx];
+      }
+      function escHtml(str) {
+        return String(str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+      function showToast(msg) {
+        let t = document.getElementById('toast');
+        t.textContent = msg;
+        t.classList.add('show');
+        setTimeout(() => t.classList.remove('show'), 2500);
+      }
+
+      let allUsers = [],
+        filtered = [],
+        currentFilter = 'all',
+        searchQ = '',
+        currentPage = 1,
+        perPage = 10;
+
+      function renderAccessDenied() {
+        document.getElementById('pageBody').innerHTML =
+          `<div class="accessDenied"><div class="inner"><div class="bigIcon"><i class="fa-solid fa-shield-halved"></i></div><h2>Access Denied</h2><p>This page is restricted to administrators only.</p><a href="/Website/SignIn.html"><i class="fa-solid fa-arrow-left" style="margin-right:8px"></i>Go to Sign In</a></div></div>`;
+      }
+
+      function renderShell(total, adminCt, userCt) {
+        document.getElementById('pageBody').innerHTML = `
+        <div class="adminBanner"><div class="bannerInner"><div class="bannerTop"><div class="bannerLeft"><div class="shieldIcon"><i class="fa-solid fa-users-gear"></i></div><div><div class="bannerTitle">Registered Users</div><div class="bannerSub">Manage all platform accounts</div></div></div><div class="bannerRight"><a href="/Website/MyProfile.html" class="backBtn"><i class="fa-solid fa-arrow-left"></i> Back to Profile</a></div></div><div class="statsRow"><div class="statChip"><div class="chipIcon" style="background:rgba(59,130,246,0.2);color:#60a5fa"><i class="fa-solid fa-users"></i></div><div><div class="chipVal">${total}</div><div class="chipLbl">Total Users</div></div></div><div class="statChip"><div class="chipIcon" style="background:rgba(139,92,246,0.2);color:#a78bfa"><i class="fa-solid fa-shield-halved"></i></div><div><div class="chipVal">${adminCt}</div><div class="chipLbl">Admins</div></div></div><div class="statChip"><div class="chipIcon" style="background:rgba(16,185,129,0.2);color:#34d399"><i class="fa-solid fa-user-check"></i></div><div><div class="chipVal">${userCt}</div><div class="chipLbl">Members</div></div></div></div></div></div>
+        <div class="mainWrap"><div class="toolbar"><div class="searchBox"><i class="fa-solid fa-magnifying-glass"></i><input type="text" id="searchInput" placeholder="Search by name, email or phone..." oninput="onSearch(this.value)"></div><div class="filterBtns"><button class="filterBtn active" id="btnAll" onclick="applyFilter('all')">All</button><button class="filterBtn" id="btnAdmins" onclick="applyFilter('admin')"><i class="fa-solid fa-shield-halved"></i> Admins</button><button class="filterBtn" id="btnUsers" onclick="applyFilter('user')"><i class="fa-solid fa-user"></i> Members</button></div></div><div class="tableCard"><div class="tableWrap" id="tableWrap"></div><div class="pagination" id="paginationRow"></div></div></div>
+      `;
+        renderTable();
+      }
+
+      window.applyFilter = function (type) {
+        currentFilter = type;
+        currentPage = 1;
+        ['btnAll', 'btnAdmins', 'btnUsers'].forEach((id) => {
+          let btn = document.getElementById(id);
+          if (btn) btn.classList.remove('active');
+        });
+        let map = { all: 'btnAll', admin: 'btnAdmins', user: 'btnUsers' };
+        let active = document.getElementById(map[type]);
+        if (active) active.classList.add('active');
+        doFilter();
+      };
+      window.onSearch = function (q) {
+        searchQ = q.toLowerCase().trim();
+        currentPage = 1;
+        doFilter();
+      };
+      function doFilter() {
+        filtered = allUsers.filter((u) => {
+          let matchRole =
+            currentFilter === 'all' ||
+            (currentFilter === 'admin' && u.isAdmin) ||
+            (currentFilter === 'user' && !u.isAdmin);
+          let matchSearch =
+            !searchQ ||
+            (u.name || '').toLowerCase().includes(searchQ) ||
+            (u.email || '').toLowerCase().includes(searchQ) ||
+            (u.phone || '').toLowerCase().includes(searchQ);
+          return matchRole && matchSearch;
+        });
+        renderTable();
+      }
+
+      function renderTable() {
+        let wrap = document.getElementById('tableWrap'),
+          pgRow = document.getElementById('paginationRow');
+        if (!wrap) return;
+        if (filtered.length === 0) {
+          wrap.innerHTML = `<div class="stateBox"><div class="stateIcon"><i class="fa-solid fa-users-slash"></i></div><p>No users found</p></div>`;
+          if (pgRow) pgRow.innerHTML = '';
+          return;
+        }
+        let totalPages = Math.ceil(filtered.length / perPage);
+        if (currentPage > totalPages) currentPage = totalPages;
+        let start = (currentPage - 1) * perPage;
+        let pageUsers = filtered.slice(start, start + perPage);
+        let rows = pageUsers
+          .map((u, i) => {
+            let [gStart, gEnd] = avatarColor(u.name || 'U');
+            let initials = (u.name || 'U').charAt(0).toUpperCase();
+            let roleClass = u.isAdmin ? 'role-admin' : 'role-user';
+            let roleLabel = u.isAdmin
+              ? '<i class="fa-solid fa-shield-halved"></i> Admin'
+              : '<i class="fa-solid fa-user"></i> Member';
+            return `<tr><td class="tdNum">${start + i + 1}</td><td><div class="userCell"><div class="avatar" style="background:linear-gradient(135deg,${gStart},${gEnd})">${initials}</div><div><div class="userName">${escHtml(u.name || '-')}</div></div></div></td><td class="emailTd">${escHtml(u.email || '-')}</td><td class="phoneTd">${escHtml(u.phone || '-')}</td><td><span class="passDots" id="pass-${u._id}" data-raw="${escHtml(u.password || '')}">••••••••</span><button class="eyeBtn" onclick="togglePass('${u._id}')"><i class="fa-solid fa-eye" id="eye-${u._id}"></i></button></td><td><span class="roleBadge ${roleClass}">${roleLabel}</span></td></tr>`;
+          })
+          .join('');
+        wrap.innerHTML = `<table><thead><tr><th>#</th><th><i class="fa-solid fa-user"></i>Name</th><th><i class="fa-solid fa-envelope"></i>Email</th><th><i class="fa-solid fa-phone"></i>Phone</th><th><i class="fa-solid fa-key"></i>Password</th><th><i class="fa-solid fa-tag"></i>Role</th></tr></thead><tbody>${rows}</tbody></table>`;
+        let pgHtml = `<div class="pgInfo">Showing ${start + 1}–${Math.min(start + perPage, filtered.length)} of ${filtered.length}</div><div class="pgBtns"><button class="pgBtn" onclick="goPage(${currentPage - 1})" ${currentPage <= 1 ? 'disabled' : ''}><i class="fa-solid fa-chevron-left"></i></button>`;
+        for (let p = 1; p <= totalPages; p++)
+          pgHtml += `<button class="pgBtn ${p === currentPage ? 'active' : ''}" onclick="goPage(${p})">${p}</button>`;
+        pgHtml += `<button class="pgBtn" onclick="goPage(${currentPage + 1})" ${currentPage >= totalPages ? 'disabled' : ''}><i class="fa-solid fa-chevron-right"></i></button></div>`;
+        pgRow.innerHTML = pgHtml;
+      }
+
+      window.goPage = function (p) {
+        let totalPages = Math.ceil(filtered.length / perPage);
+        if (p < 1 || p > totalPages) return;
+        currentPage = p;
+        renderTable();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      };
+      window.togglePass = function (id) {
+        let span = document.getElementById(`pass-${id}`),
+          eye = document.getElementById(`eye-${id}`);
+        if (!span) return;
+        if (span.classList.contains('revealed')) {
+          span.textContent = '••••••••';
+          span.classList.remove('revealed');
+          eye.className = 'fa-solid fa-eye';
+        } else {
+          span.textContent = span.dataset.raw || '(empty)';
+          span.classList.add('revealed');
+          eye.className = 'fa-solid fa-eye-slash';
+        }
+      };
+
+      async function boot() {
+        let user = await getLoggedInUser();
+        if (!user || !user.isAdmin) {
+          renderAccessDenied();
+          return;
+        }
+        document.getElementById('pageBody').innerHTML =
+          `<div style="min-height:50vh;display:flex;align-items:center;justify-content:center;"><div style="text-align:center;"><div class="spinner"></div><p style="color:var(--muted);">Loading users...</p></div></div>`;
+        try {
+          let res = await fetch(API_URL + '/api/users/all');
+          let data = await res.json();
+          if (!data.success) throw new Error(data.message);
+          allUsers = data.users;
+          filtered = [...allUsers];
+          let adminCount = allUsers.filter((u) => u.isAdmin).length;
+          renderShell(
+            allUsers.length,
+            adminCount,
+            allUsers.length - adminCount,
+          );
+          showToast(`✓ ${allUsers.length} users loaded`);
+        } catch (err) {
+          document.getElementById('pageBody').innerHTML =
+            `<div class="stateBox"><div class="stateIcon"><i class="fa-solid fa-triangle-exclamation"></i></div><p style="color:#ef4444">Failed to load users. Check backend.</p></div>`;
+        }
+      }
+
+      fetch('Components/Header.html')
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById('header').innerHTML = html;
+          if (typeof updateHeaderUI === 'function') updateHeaderUI();
+          if (typeof initStickyNav === 'function') initStickyNav();
+        });
+      fetch('Components/Footer.html')
+        .then((r) => r.text())
+        .then((html) => {
+          document.getElementById('footer').innerHTML = html;
+        });
+      boot();
+    </script>
+    <script src="JS/stickyNav.js"></script>
+  </body>
+</html>
