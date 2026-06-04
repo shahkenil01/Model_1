@@ -46,6 +46,23 @@ app.post("/api/users", async (req, res) => {
   }
 });
 
+app.get("/api/users", async (req, res) => {
+  try {
+    const users = await User.find();
+
+    res.status(200).json({
+      success: true,
+      users
+    });
+
+  } catch (error) {
+    res.status(500).json({
+      success: false,
+      message: error.message
+    });
+  }
+});
+
 app.listen(process.env.PORT, () => {
   console.log(`Server running on http://localhost:${process.env.PORT}`);
 });
